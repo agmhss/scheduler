@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CircularDrop — ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Tamil', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', 'Noto Sans Tamil', sans-serif; }
+    [contenteditable="true"]:hover { outline: 1px dashed rgba(99, 102, 241, 0.6); border-radius: 4px; cursor: text; }
+    [contenteditable="true"]:focus { outline: 2px solid #4f46e5; background: rgba(255, 255, 255, 0.95); color: #0f172a; border-radius: 4px; padding: 0 4px; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+    .pulse-urgent { animation: pulse-subtle 2s infinite ease-in-out; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP APP HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-200 shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-xs sm:text-base font-extrabold text-slate-900 tracking-tight line-clamp-1">ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM</h1>
+              <span class="px-2 py-0.5 text-2xs font-semibold bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100 hidden md:inline-block">CircularDrop</span>
+            </div>
+            <p class="text-2xs sm:text-xs text-slate-500 hidden sm:block">Automated Circular Parsing, Past Schedule Retrieval &amp; Forthcoming Event Tracker</p>
+          </div>
+        </div>
+
+        <!-- Current Date & Quick Action Buttons -->
+        <div class="flex items-center space-x-2 sm:space-x-2.5">
+          <div class="hidden lg:flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 border border-slate-200/60">
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span id="currentDateDisplay">Loading today's date...</span>
+          </div>
+
+          <button id="btnOpenDropbox" type="button" class="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-semibold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all cursor-pointer">
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            <span>Drop Circular</span>
+          </button>
+
+          <button id="btnOpenPostersHeader" type="button" class="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-semibold rounded-lg text-white bg-gradient-to-r from-pink-600 to-amber-500 hover:from-pink-700 hover:to-amber-600 shadow-sm transition-all cursor-pointer">
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="hidden sm:inline">Posters &amp; Web Card</span>
+            <span class="sm:hidden">Posters</span>
+          </button>
+
+          <button id="btnOpenAutomateModal" type="button" class="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors shadow-2xs cursor-pointer">
+            <svg class="w-4 h-4 sm:mr-1 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="hidden sm:inline">Auto-Sync Pipeline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN NAVIGATION TABS (ALL 7 VERIFIED TABS) -->
+      <nav class="flex space-x-5 border-t border-slate-100 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar" aria-label="Tabs">
+        <button id="navDashboard" type="button" class="tab-btn py-3 border-b-2 border-indigo-600 text-indigo-600 font-semibold flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span>Dashboard &amp; Upcoming</span>
+        </button>
+        <button id="navDropbox" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+          </svg>
+          <span>Circular Drop-Box &amp; Parser</span>
+        </button>
+        <button id="navCalendar" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Calendar Grid</span>
+        </button>
+        <button id="navArchive" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          <span>Circular History &amp; Retrieve (<span id="archiveCountBadge">0</span>)</span>
+        </button>
+        <button id="navPosters" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Colourful Posters (Download)</span>
+        </button>
+        <button id="navWebCard" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+          <span>School Webpage HTML Card</span>
+        </button>
+        <button id="navCloudAi" type="button" class="tab-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+          </svg>
+          <span>Google Sheets Sync &amp; Groq AI</span>
+          <span id="navSyncStatusDot" class="w-2 h-2 rounded-full bg-slate-300"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN BODY CONTENT -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- TAB 1: DASHBOARD & UPCOMING -->
+    <section id="viewDashboard" class="space-y-6">
+      
+      <!-- SUMMARY METRIC CARDS -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Next 3 Days Card -->
+        <div class="bg-white p-4 rounded-xl border border-rose-100 shadow-2xs relative overflow-hidden bg-gradient-to-br from-white to-rose-50/40">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-medium text-rose-600 uppercase tracking-wider">Next 3 Days</p>
+              <h3 id="statNext3Days" class="text-2xl font-extrabold text-slate-900 mt-1">0</h3>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+          <p class="text-xs text-rose-500 mt-2 font-medium flex items-center">
+            <span class="inline-block w-2 h-2 rounded-full bg-rose-500 mr-1.5 animate-ping"></span>
+            Urgent actions / events
+          </p>
+        </div>
+
+        <!-- Pending Deadlines Card -->
+        <div class="bg-white p-4 rounded-xl border border-amber-100 shadow-2xs relative overflow-hidden bg-gradient-to-br from-white to-amber-50/40">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-medium text-amber-600 uppercase tracking-wider">Active Deadlines</p>
+              <h3 id="statDeadlines" class="text-2xl font-extrabold text-slate-900 mt-1">0</h3>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+          </div>
+          <p class="text-xs text-amber-600 mt-2 font-medium">Submissions &amp; cutoffs</p>
+        </div>
+
+        <!-- Total Forthcoming Card -->
+        <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-2xs relative overflow-hidden bg-gradient-to-br from-white to-indigo-50/40">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider">Total Forthcoming</p>
+              <h3 id="statTotalUpcoming" class="text-2xl font-extrabold text-slate-900 mt-1">0</h3>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+          </div>
+          <p class="text-xs text-indigo-600 mt-2 font-medium">Synced across circulars</p>
+        </div>
+
+        <!-- Circulars Processed Card -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Circulars Ingested</p>
+              <h3 id="statCirculars" class="text-2xl font-extrabold text-slate-900 mt-1">0</h3>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-xs text-slate-500">Vault: <strong id="statVaultCount">0</strong> saved</span>
+            <button id="btnExportAllIcal" type="button" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold underline flex items-center cursor-pointer">
+              Export .ics
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPOTLIGHT: "NEXT FEW DAYS" (HIGHLIGHTED TOP SECTION) -->
+      <div class="bg-white rounded-xl border border-rose-200/80 shadow-xs overflow-hidden">
+        <div class="bg-gradient-to-r from-rose-500/10 via-amber-500/5 to-transparent px-5 py-3.5 border-b border-rose-100 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center space-x-2">
+            <span class="flex h-3 w-3 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+            </span>
+            <h2 class="text-base font-bold text-slate-900">Next Few Days Horizon (Today, Tomorrow &amp; Next 72 Hours)</h2>
+            <span class="text-xs px-2 py-0.5 bg-rose-100 text-rose-800 rounded-full font-semibold">Do Not Miss</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button id="btnClearAllDashboard" type="button" class="text-xs font-semibold text-rose-600 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 px-3 py-1 rounded-lg border border-rose-200 transition-colors cursor-pointer">
+              🗑️ Reset / Clear All Schedules
+            </button>
+          </div>
+        </div>
+
+        <div id="nextFewDaysContainer" class="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+
+      <!-- FORTHCOMING & PAST SCHEDULES STREAM + RETRIEVE BY DATE RANGE BAR -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+        
+        <!-- Controls: Filters & Search Bar -->
+        <div class="p-5 border-b border-slate-100 bg-slate-50/50 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <div class="flex items-center space-x-2">
+                <h2 id="streamSectionHeading" class="text-base font-bold text-slate-900">Forthcoming &amp; Past Schedules Stream</h2>
+                <span id="retrieveModeIndicator" class="hidden px-2.5 py-0.5 text-2xs font-bold bg-indigo-600 text-white rounded-full">Date Range Recall Active</span>
+              </div>
+              <p class="text-xs text-slate-500">Chronological timeline of circular notices — use From Date &amp; To Date below to recall past schedules</p>
+            </div>
+
+            <!-- Audience / Type Filter Chips -->
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search event, circular #, venue..." class="text-xs sm:text-sm pl-8 pr-3 py-1.5 rounded-lg border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white w-48 sm:w-60">
+                <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </div>
+
+              <select id="filterAudience" class="text-xs sm:text-sm py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-700 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+                <option value="ALL">For Whom: All</option>
+                <option value="Students">Students Only</option>
+                <option value="Teachers">Faculty / Staff</option>
+                <option value="HODs">HODs / Leads</option>
+                <option value="Parents">Parents</option>
+                <option value="Admin">Admin Staff</option>
+              </select>
+
+              <select id="filterType" class="text-xs sm:text-sm py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-700 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+                <option value="ALL">Type: All</option>
+                <option value="DEADLINE">Deadlines Only</option>
+                <option value="EVENT">Events &amp; Programs</option>
+                <option value="MEETING">Meetings</option>
+                <option value="EXAM">Exams &amp; Tests</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- DEDICATED RETRIEVE & FILTER BY DATE RANGE BAR -->
+          <div class="p-3.5 rounded-xl bg-indigo-50/70 border border-indigo-100 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-indigo-950 block">Retrieve Past &amp; Archived Schedules by Date</span>
+                <span class="text-2xs text-indigo-700">Recalls schedules from active list, local historical vault &amp; linked Google Sheet</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex items-center space-x-1.5 bg-white px-2.5 py-1.5 rounded-lg border border-indigo-200">
+                <label for="retrieveFromDate" class="text-2xs font-bold text-slate-600 uppercase">From:</label>
+                <input type="date" id="retrieveFromDate" class="text-xs text-slate-800 font-semibold focus:outline-hidden bg-transparent">
+              </div>
+
+              <div class="flex items-center space-x-1.5 bg-white px-2.5 py-1.5 rounded-lg border border-indigo-200">
+                <label for="retrieveToDate" class="text-2xs font-bold text-slate-600 uppercase">To:</label>
+                <input type="date" id="retrieveToDate" class="text-xs text-slate-800 font-semibold focus:outline-hidden bg-transparent">
+              </div>
+
+              <button id="btnRetrieveByDate" type="button" class="inline-flex items-center px-3.5 py-2 text-xs font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xs transition-all cursor-pointer">
+                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                <span>Retrieve Schedules</span>
+              </button>
+
+              <button id="btnClearDateFilter" type="button" class="inline-flex items-center px-3 py-2 text-xs font-semibold rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition-colors cursor-pointer">
+                Show All / Clear Date Filter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Events List -->
+        <div id="forthcomingTimelineContainer" class="divide-y divide-slate-100 p-2 sm:p-5">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: CIRCULAR DROP-BOX & PARSER -->
+    <section id="viewDropbox" class="hidden space-y-6">
+      
+      <!-- DROP-BOX DROPZONE -->
+      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 mb-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900">Circular Ingestion Drop-Box</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Drag and drop circular notices (PDF, Text, Images) or paste circular text below. The smart engine extracts dates, deadlines, audience, and venues automatically for <strong>ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM</strong>.
+            </p>
+          </div>
+
+          <!-- Drag and Drop Box -->
+          <div id="dropZone" class="border-2 border-dashed border-indigo-200 hover:border-indigo-500 bg-indigo-50/30 hover:bg-indigo-50/60 rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-colors relative">
+            <input type="file" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".txt,.pdf,.docx,.doc,image/*">
+            <div class="flex flex-col items-center">
+              <svg class="w-10 h-10 text-indigo-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <p class="text-sm font-semibold text-slate-800">Drag circular PDF or document here, or <span class="text-indigo-600 underline">browse files</span></p>
+              <p class="text-xs text-slate-400 mt-1">Supports PDF, Word, Plain Text, or Scanned Images</p>
+            </div>
+          </div>
+
+          <!-- Quick Samples Selector -->
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+            <span class="text-xs text-slate-500 font-medium">Or test with ready-made circulars:</span>
+            <button id="btnSample1" type="button" class="text-xs bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 px-2.5 py-1 rounded-md border border-slate-200 transition-colors font-medium cursor-pointer">
+              📄 Annual Sports Day Circular
+            </button>
+            <button id="btnSample2" type="button" class="text-xs bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 px-2.5 py-1 rounded-md border border-slate-200 transition-colors font-medium cursor-pointer">
+              📄 Exam Fee &amp; Internal Marks Notice
+            </button>
+            <button id="btnSample3" type="button" class="text-xs bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 px-2.5 py-1 rounded-md border border-slate-200 transition-colors font-medium cursor-pointer">
+              📄 Staff Academic Council Meeting
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="relative my-6 text-center">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+            <span class="relative px-3 bg-white text-xs text-slate-400 font-medium uppercase">Or paste circular text</span>
+          </div>
+
+          <!-- Inline Groq AI & Live Sheet Status Bar inside Drop-Box -->
+          <div class="mb-4 p-3.5 rounded-xl bg-gradient-to-r from-indigo-50/90 via-purple-50/60 to-amber-50/70 border border-indigo-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center space-x-2.5">
+              <span id="dropboxParserModeBadge" class="px-2.5 py-1 rounded-full text-2xs font-extrabold uppercase tracking-wider bg-slate-200 text-slate-700">
+                ⚡ Built-in Regex Parser
+              </span>
+              <span class="text-xs text-slate-600">Want AI extraction for unstructured notices? Enter your <strong>Groq API Key</strong>:</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <input type="password" id="groqQuickKeyInput" placeholder="gsk_... (Optional Groq API Key)" class="text-xs px-3 py-1.5 rounded-lg border border-indigo-200 bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 w-48 sm:w-56 font-mono">
+              <button type="button" id="btnSaveQuickGroqKey" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xs cursor-pointer">
+                Save Key
+              </button>
+              <button type="button" id="btnGoToCloudAiTab" class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-white hover:bg-slate-50 text-indigo-700 border border-indigo-200 cursor-pointer">
+                Sheets Sync ⚙️
+              </button>
+            </div>
+          </div>
+
+          <!-- Paste text area -->
+          <div class="space-y-3">
+            <div>
+              <label for="circularTextInput" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Circular Text / Notice Content</label>
+              <textarea id="circularTextInput" rows="8" placeholder="Paste full circular text here (e.g., Reference number, date, Subject, For whom, Event timing, Venue, Submission deadlines, etc.)..." class="w-full text-xs sm:text-sm p-3.5 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono bg-slate-50/50"></textarea>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <button id="btnClearText" type="button" class="text-xs text-slate-500 hover:text-slate-700 font-medium cursor-pointer">
+                Clear text
+              </button>
+
+              <button id="btnParseCircular" type="button" class="inline-flex items-center px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-100 transition-all cursor-pointer">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <span>Analyze &amp; Extract Events</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARSED PREVIEW & EDIT SECTION (APPEARS WHEN PARSED) -->
+      <div id="parseReviewSection" class="hidden bg-white rounded-xl border-2 border-indigo-200 p-6 shadow-md">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+          <div>
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">AI / Heuristic Parser Result</span>
+            <h3 class="text-lg font-bold text-slate-900">Extracted Event Details — Please Review</h3>
+            <p class="text-xs text-slate-500">Check and edit any fields if needed before adding to your master schedule.</p>
+          </div>
+          <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">
+            ✓ Auto-Extracted
+          </span>
+        </div>
+
+        <form id="extractedEventForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Ref No -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Circular Ref. / Notice No.</label>
+            <input type="text" id="parsedRef" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500" required>
+          </div>
+
+          <!-- Subject / Event Title -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Event / Deadline Title (Subject)</label>
+            <input type="text" id="parsedTitle" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 font-medium" required>
+          </div>
+
+          <!-- When (Date & Time) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Event Date &amp; Time (When)</label>
+            <input type="datetime-local" id="parsedDateTime" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500" required>
+          </div>
+
+          <!-- Deadline (if any) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Submission Deadline / Cutoff (if applicable)</label>
+            <input type="datetime-local" id="parsedDeadline" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500">
+          </div>
+
+          <!-- For Whom (Audience) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">For Whom (Target Audience)</label>
+            <input type="text" id="parsedAudience" placeholder="e.g. All Teachers, Std 10 & 12, HODs, Parents" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500" required>
+          </div>
+
+          <!-- Where (Venue) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Where (Venue / Location / Link)</label>
+            <input type="text" id="parsedVenue" placeholder="e.g. Main Auditorium, Online Zoom, Room 204" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500" required>
+          </div>
+
+          <!-- Category -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Category</label>
+            <select id="parsedCategory" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500">
+              <option value="Academic">Academic &amp; Classes</option>
+              <option value="Examination">Examination &amp; Submissions</option>
+              <option value="Meeting">Meeting &amp; Briefing</option>
+              <option value="Sports/Cultural">Sports, Cultural &amp; Events</option>
+              <option value="Administrative">Administrative &amp; Fees</option>
+            </select>
+          </div>
+
+          <!-- Priority -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Priority / Urgency</label>
+            <select id="parsedPriority" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500">
+              <option value="High">🚨 High Priority (Critical / Upcoming)</option>
+              <option value="Medium" selected>📌 Medium Priority</option>
+              <option value="Low">ℹ️ Low / Informational</option>
+            </select>
+          </div>
+
+          <!-- Notes / Action Required -->
+          <div class="md:col-span-2">
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Key Action Items / Special Instructions</label>
+            <textarea id="parsedNotes" rows="2" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500"></textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="md:col-span-2 flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">
+            <button type="button" id="btnCancelParsed" class="px-4 py-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-800 cursor-pointer">
+              Discard
+            </button>
+            <button type="submit" class="px-5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm flex items-center cursor-pointer">
+              <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Confirm &amp; Add to Schedule</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- TAB 3: CALENDAR GRID -->
+    <section id="viewCalendar" class="hidden space-y-6">
+      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
+        <!-- Calendar Header -->
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center space-x-3">
+            <h2 id="calMonthTitle" class="text-xl font-bold text-slate-900">November 2026</h2>
+            <button id="btnCalToday" type="button" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md font-medium cursor-pointer">
+              Today
+            </button>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button id="btnCalPrev" type="button" class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 border border-slate-200 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button id="btnCalNext" type="button" class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 border border-slate-200 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Days of Week Header -->
+        <div class="grid grid-cols-7 gap-1 text-center font-semibold text-xs text-slate-400 uppercase py-2 border-b border-slate-100">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+
+        <!-- Calendar Month Cells -->
+        <div id="calGrid" class="grid grid-cols-7 gap-1 mt-2">
+          <!-- Filled dynamically -->
+        </div>
+
+        <!-- Selected Day's Events Drawer -->
+        <div id="calDayEventsDrawer" class="mt-6 pt-6 border-t border-slate-100">
+          <h3 id="calSelectedDayTitle" class="text-sm font-bold text-slate-900 mb-3">Events on this day</h3>
+          <div id="calSelectedDayList" class="space-y-2">
+            <!-- Selected events -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: CIRCULAR ARCHIVE / HISTORY & PAST SCHEDULE RETRIEVAL -->
+    <section id="viewArchive" class="hidden space-y-6">
+      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Ingested Circulars Archive &amp; Past Schedule Vault</h2>
+            <p class="text-xs text-slate-500">Recall historical schedules by date range or manage all ingested notices for ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btnLoadDemoSamplesArchive" type="button" class="text-xs text-indigo-700 hover:text-indigo-900 font-semibold border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
+              + Load Demo Samples
+            </button>
+            <button id="btnResetData" type="button" class="text-xs text-white font-bold bg-rose-600 hover:bg-rose-700 px-3.5 py-1.5 rounded-lg shadow-2xs transition-colors cursor-pointer">
+              🗑️ Reset &amp; Delete All Schedules (Including Samples)
+            </button>
+          </div>
+        </div>
+
+        <!-- ARCHIVE DATE RANGE RETRIEVAL PANEL -->
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900 flex items-center space-x-2">
+                <span>🔍 Retrieve Past Schedules (From Date — To Date)</span>
+              </h3>
+              <p class="text-xs text-slate-500">Search and recall schedules from your historical vault and linked Google Sheet</p>
+            </div>
+            <span id="archiveRetrieveCountBadge" class="text-xs font-bold px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-full">All Vault Records</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div>
+              <label for="archiveFromDate" class="block text-2xs font-bold text-slate-600 uppercase mb-1">From Date</label>
+              <input type="date" id="archiveFromDate" class="w-full text-xs sm:text-sm p-2 rounded-lg border border-slate-200 bg-white">
+            </div>
+            <div>
+              <label for="archiveToDate" class="block text-2xs font-bold text-slate-600 uppercase mb-1">To Date</label>
+              <input type="date" id="archiveToDate" class="w-full text-xs sm:text-sm p-2 rounded-lg border border-slate-200 bg-white">
+            </div>
+            <div class="flex items-end">
+              <button id="btnArchiveRetrieve" type="button" class="w-full py-2 px-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm rounded-lg shadow-2xs transition-colors cursor-pointer">
+                Retrieve Past Schedules
+              </button>
+            </div>
+            <div class="flex items-end">
+              <button id="btnArchiveClearFilter" type="button" class="w-full py-2 px-3 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs sm:text-sm rounded-lg border border-slate-200 transition-colors cursor-pointer">
+                Show All Vault History
+              </button>
+            </div>
+          </div>
+
+          <!-- Recalled Past Schedules List inside Archive -->
+          <div id="archiveRetrievedEventsList" class="space-y-2.5 pt-2">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- RAW CIRCULARS HISTORY LIST -->
+        <div>
+          <h3 class="text-sm font-bold text-slate-800 mb-3">Original Ingested Circular Texts (<span id="rawCircularsCount">0</span>)</h3>
+          <div id="circularsListContainer" class="space-y-4">
+            <!-- Filled dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: COLOURFUL POSTER STUDIO (DATE-WISE, EVENT-WISE, PEOPLE-WISE) -->
+    <section id="viewPosters" class="hidden space-y-6">
+      <!-- Controls & Customization Bar -->
+      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-0.5 text-xs font-bold bg-pink-100 text-pink-700 rounded-full">Poster Studio</span>
+              <h2 class="text-lg font-bold text-slate-900">Colourful Schedule Poster Generator</h2>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">Generate &amp; download high-resolution colourful schedule posters organized Date-wise, Event-wise, or People-wise (Students / Teachers).</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button id="btnDownloadPosterPng" type="button" class="inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 shadow-md shadow-indigo-100 transition-all cursor-pointer">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              <span>Download High-Res Poster (.PNG)</span>
+            </button>
+            <button id="btnDownloadPosterHtml" type="button" class="inline-flex items-center px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all cursor-pointer">
+              <svg class="w-4 h-4 mr-1.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+              </svg>
+              <span>Download Printable HTML Poster</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Poster Mode, Language & Theme Selectors -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">1. Poster Grouping Mode</label>
+            <select id="posterGroupMode" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 bg-slate-50 font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+              <option value="datewise">📅 Date-Wise Schedule</option>
+              <option value="eventwise">🏷️ Event-Wise (Category)</option>
+              <option value="people_all">👥 People-Wise: All Groups</option>
+              <option value="people_students">🎓 Students Only Poster</option>
+              <option value="people_teachers">👩‍🏫 Teachers &amp; Staff Only</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">2. Poster Language (மொழி)</label>
+            <select id="posterLanguage" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-indigo-300 bg-indigo-50/70 font-bold text-indigo-950 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+              <option value="en">🇬🇧 English Poster</option>
+              <option value="ta">🇮🇳 தமிழ் (Tamil Poster)</option>
+              <option value="bilingual">🌐 தமிழ் + English (Bilingual)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">3. Poster Colour Theme</label>
+            <select id="posterTheme" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 bg-slate-50 font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+              <option value="royal">✨ Royal Indigo &amp; Gold</option>
+              <option value="sunrise">🌅 Sunrise Coral &amp; Amber</option>
+              <option value="emerald">🌿 Emerald Campus &amp; Teal</option>
+              <option value="ocean">🌊 Ocean Sapphire &amp; Sky</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">4. Institution / School Title</label>
+            <input type="text" id="posterSchoolName" value="ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 font-medium">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">5. Poster Banner Subtitle</label>
+            <input type="text" id="posterSubtitle" value="FORTHCOMING EVENTS, CIRCULARS &amp; DEADLINES" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 font-medium">
+          </div>
+        </div>
+
+        <!-- Direct Edit & AI Tamil Translation Bar -->
+        <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-amber-50/80 border border-amber-200/80 rounded-xl px-4 py-2.5">
+          <div class="flex items-center space-x-2 text-xs text-amber-900">
+            <span class="text-base">✏️</span>
+            <span><strong>Interactive Editable Poster:</strong> Click on any heading, event title, time, venue, or note directly on the poster below to edit text in <strong>English or தமிழ்</strong> before downloading!</span>
+          </div>
+          <div class="flex items-center space-x-2 shrink-0">
+            <button type="button" id="btnAiTranslateTamil" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-700 text-white shadow-2xs cursor-pointer whitespace-nowrap">
+              ✨ Translate All to தமிழ் (Qwen AI / Smart Dict)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE VISUAL POSTER PREVIEW -->
+      <div class="flex flex-col items-center">
+        <div class="w-full max-w-4xl" id="posterLivePreview">
+          <!-- Populated dynamically by renderPosterPreview() -->
+        </div>
+      </div>
+      <!-- Hidden High-Res Canvas for PNG Export -->
+      <canvas id="posterExportCanvas" class="hidden"></canvas>
+    </section>
+
+    <!-- TAB 6: SCHOOL WEBPAGE STANDALONE HTML CARD -->
+    <section id="viewWebCard" class="hidden space-y-6">
+      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-800 rounded-full">Webpage Integration</span>
+              <h2 class="text-lg font-bold text-slate-900">School Webpage Forthcoming Events HTML Card</h2>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">A neat, colourful, self-contained HTML widget card for <strong>ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM</strong> ready to embed on your school website.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button id="btnDownloadWebCardHtml" type="button" class="inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-100 transition-all cursor-pointer">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              <span>Download Separate HTML Card (.html)</span>
+            </button>
+            <button id="btnCopyWebCardCode" type="button" class="inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition-all cursor-pointer">
+              <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span>Copy Embeddable HTML Code</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Widget Customization Controls -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Card Audience Filter</label>
+            <select id="widgetAudienceFilter" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 bg-slate-50 font-semibold text-slate-800">
+              <option value="ALL">All School Events (Students, Teachers, Parents)</option>
+              <option value="Students">Students Events &amp; Deadlines Only</option>
+              <option value="Teachers">Teachers &amp; Faculty Notices Only</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Card Colour Style</label>
+            <select id="widgetColorTheme" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 bg-slate-50 font-semibold text-slate-800">
+              <option value="vibrant">🎨 Vibrant Multi-Colour School Card</option>
+              <option value="royal">🏛️ Royal Academic Navy &amp; Gold</option>
+              <option value="emerald">🌱 Fresh Campus Emerald &amp; Teal</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Card Header Title</label>
+            <input type="text" id="widgetHeaderTitle" value="ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM — Forthcoming Events" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 font-medium">
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE BY SIDE: LIVE CARD PREVIEW & EMBED CODE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Live Card Preview -->
+        <div class="lg:col-span-7 flex flex-col items-center">
+          <div class="w-full mb-2 flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Live School Webpage Card Preview</span>
+            <span class="text-xs text-emerald-600 font-medium">Interactive Filter Tabs Included</span>
+          </div>
+          <div id="webCardLiveContainer" class="w-full">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Embeddable HTML Code Box -->
+        <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-4 text-slate-100 shadow-lg border border-slate-800">
+          <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+            <div>
+              <h3 class="text-sm font-bold text-white">Standalone HTML Card Source Code</h3>
+              <p class="text-xs text-slate-400">Paste directly into your school webpage or embed via iframe</p>
+            </div>
+            <span class="px-2 py-0.5 text-2xs font-mono bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/30">Self-Contained HTML</span>
+          </div>
+          <textarea id="webCardCodeTextarea" readonly rows="18" class="w-full bg-slate-950 text-emerald-300 font-mono text-xs p-3 rounded-xl border border-slate-800 focus:outline-hidden custom-scrollbar"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: LIVE GOOGLE SHEETS / JSON SYNC, DRIVE FOLDER WATCHER & GROQ AI CONFIGURATION -->
+    <section id="viewCloudAi" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- CARD 1: GROQ AI CIRCULAR PARSER SETTINGS -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-extrabold text-lg">
+                  ⚡
+                </div>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900">Groq AI Ultra-Fast Circular Parser</h2>
+                  <p class="text-xs text-slate-500">Optional AI extraction using Qwen-3 / Llama-3.3 on Groq Cloud</p>
+                </div>
+              </div>
+              <span id="groqStatusBadge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                Using Built-In Regex
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              When you provide a <strong>Groq API Key</strong> (<code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-indigo-700">gsk_...</code>), clicking <strong>Analyze &amp; Extract Events</strong> in the Drop-Box sends the circular text to Groq's LLM to intelligently extract complex dates, relative deadlines, target audiences (Students vs. Teachers), and action notes. If left blank, the built-in offline pattern parser runs automatically.
+            </p>
+
+            <!-- Groq API Key Input -->
+            <div>
+              <label for="groqApiKeyInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Groq API Key (Optional)</label>
+              <div class="flex items-center space-x-2">
+                <input type="password" id="groqApiKeyInput" placeholder="gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="flex-1 text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 font-mono focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+                <button type="button" id="btnToggleGroqKey" class="px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 cursor-pointer">
+                  Show
+                </button>
+              </div>
+              <p class="text-2xs text-slate-400 mt-1">Stored locally in your browser's <code class="font-mono">localStorage</code>. Never shared with third parties.</p>
+            </div>
+
+            <!-- Groq Model Selector -->
+            <div>
+              <label for="groqModelSelect" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Groq LLM Model</label>
+              <select id="groqModelSelect" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 bg-slate-50 font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+                <option value="qwen/qwen3-32b" selected>qwen/qwen3-32b (Qwen 3 32B — Recommended &amp; Multilingual Tamil/EN)</option>
+                <option value="qwen-qwq-32b">qwen-qwq-32b (Qwen QwQ 32B — Deep Reasoning Circular Parser)</option>
+                <option value="qwen-2.5-32b">qwen-2.5-32b (Qwen 2.5 32B — General &amp; Bilingual Extraction)</option>
+                <option value="qwen-2.5-coder-32b">qwen-2.5-coder-32b (Qwen 2.5 Coder 32B — Fast Structured JSON)</option>
+                <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Meta Llama 3.3 70B)</option>
+                <option value="llama-3.1-8b-instant">llama-3.1-8b-instant (Fastest Sub-Second Extraction)</option>
+                <option value="mixtral-8x7b-32768">mixtral-8x7b-32768 (Long Circular Documents)</option>
+                <option value="gemma2-9b-it">gemma2-9b-it (Google Gemma 2 9B)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+            <button type="button" id="btnClearGroqKey" class="text-xs text-rose-600 hover:text-rose-800 font-semibold cursor-pointer">
+              Remove API Key
+            </button>
+            <div class="flex items-center space-x-2">
+              <button type="button" id="btnTestGroqKey" class="px-3.5 py-2 text-xs font-semibold rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 cursor-pointer">
+                Test Groq Connection
+              </button>
+              <button type="button" id="btnSaveGroqKey" class="px-4 py-2 text-xs font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm cursor-pointer">
+                Save Groq Settings
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: LIVE GOOGLE SHEETS / JSON SYNC & GOOGLE DRIVE "INCOMING CIRCULARS" WATCHER -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold text-lg">
+                  📊
+                </div>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900">Google Drive "Incoming Circulars" &amp; Sheet Sync</h2>
+                  <p class="text-xs text-slate-500">Auto-ingest from your Drive folder &amp; sync live with Google Sheets</p>
+                </div>
+              </div>
+              <span id="cloudSyncStatusBadge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                Local Mode
+              </span>
+            </div>
+
+            <!-- Live Read URL (CSV or JSON) -->
+            <div>
+              <label for="cloudSheetUrlInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                1. Published Google Sheet CSV Link or JSON Endpoint URL (Pull &amp; Webpage Auto-Fetch)
+              </label>
+              <input type="url" id="cloudSheetUrlInput" placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 font-mono focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+              <p class="text-2xs text-slate-500 mt-1">
+                In Google Sheets: <strong>File → Share → Publish to web → Comma-separated values (.csv)</strong>. Paste the link here so both this app and your School Webpage Card fetch live updates!
+              </p>
+            </div>
+
+            <!-- Optional Two-Way Apps Script Webhook URL (Push) -->
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+                <label for="cloudWebhookUrlInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  2. Google Apps Script Web App URL (Push &amp; Drive Folder Watcher)
+                </label>
+                <div class="flex items-center space-x-2">
+                  <button type="button" id="btnCopyAppsScript" class="text-2xs text-indigo-600 hover:text-indigo-800 font-bold underline cursor-pointer">
+                    📋 Copy Webhook Script
+                  </button>
+                  <button type="button" id="btnCopyDriveFolderScript" class="text-2xs text-emerald-700 hover:text-emerald-900 font-bold underline cursor-pointer">
+                    📁 Copy "Incoming Circulars" Drive Watcher Script
+                  </button>
+                </div>
+              </div>
+              <input type="url" id="cloudWebhookUrlInput" placeholder="https://script.google.com/macros/s/.../exec (Optional)" class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-200 font-mono focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+              <p class="text-2xs text-slate-500 mt-1">
+                Watches your Google Drive folder named <code class="bg-slate-100 px-1 rounded font-mono">"Incoming Circulars"</code> (or <code class="bg-slate-100 px-1 rounded font-mono">"Incoming Circulsrs"</code>), extracts text from new PDFs/Docs/Images, and appends rows to your Google Sheet automatically!
+              </p>
+            </div>
+
+            <!-- Auto-Sync Checkbox & Export Tools -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <label class="inline-flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer">
+                <input type="checkbox" id="chkAutoSyncCloud" class="rounded text-emerald-600 focus:ring-emerald-500">
+                <span>Auto-pull from Sheet/JSON when app opens</span>
+              </label>
+
+              <div class="flex items-center space-x-2">
+                <button type="button" id="btnExportCsvSheet" class="px-2.5 py-1.5 text-2xs font-bold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 cursor-pointer">
+                  ⬇ Download Sheet Template (.CSV)
+                </button>
+                <button type="button" id="btnExportJsonFeed" class="px-2.5 py-1.5 text-2xs font-bold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 cursor-pointer">
+                  ⬇ Download .JSON Feed
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+            <button type="button" id="btnLoadDemoJsonFeed" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold cursor-pointer">
+              Load Sample Cloud Feed
+            </button>
+            <div class="flex items-center space-x-2">
+              <button type="button" id="btnSaveCloudConfig" class="px-3.5 py-2 text-xs font-semibold rounded-lg border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 cursor-pointer">
+                Save Sync URLs
+              </button>
+              <button type="button" id="btnPullCloudSync" class="px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm flex items-center cursor-pointer">
+                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                <span>Sync / Pull from Sheet Now</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: AUTOMATION & GOOGLE DRIVE "INCOMING CIRCULARS" PIPELINE GUIDE -->
+  <div id="modalAutomate" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm">
+            ⚙️
+          </div>
+          <h3 class="text-lg font-bold text-slate-900">Google Drive "Incoming Circulars" &amp; Auto-Sync Guide</h3>
+        </div>
+        <button id="btnCloseAutomateModal" type="button" class="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="py-4 space-y-4 text-xs sm:text-sm text-slate-600">
+        <p>You have created your Google Drive folder and published your Google Sheet! Here is how the complete pipeline works end-to-end:</p>
+
+        <!-- Pipeline 1: Google Drive Folder Watcher -->
+        <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-emerald-950 text-sm">1. Google Drive Folder Watcher ("Incoming Circulars")</span>
+            <button type="button" id="btnCopyDriveScriptModal" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1 rounded-lg cursor-pointer">
+              📋 Copy Drive Watcher Script
+            </button>
+          </div>
+          <p class="text-slate-600 text-xs">
+            Open your tracking Google Sheet → click <strong>Extensions → Apps Script</strong> → paste the copied Drive Watcher Script. Set a Time-Driven Trigger (every 5 or 15 minutes) on <code class="bg-white px-1 py-0.5 rounded font-mono">watchIncomingCircularsFolder</code>.
+          </p>
+          <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
+            <li>Automatically detects new PDFs, Word docs, or text notices dropped into your <code class="bg-white px-1 rounded font-mono">"Incoming Circulars"</code> (or <code class="bg-white px-1 rounded font-mono">"Incoming Circulsrs"</code>) folder.</li>
+            <li>Extracts the circular title, date, audience, and venue, and appends a row directly into your Google Sheet.</li>
+          </ul>
+        </div>
+
+        <!-- Pipeline 2: Live CSV Pull & Historical Retrieval -->
+        <div class="p-4 rounded-xl border border-indigo-100 bg-indigo-50/40 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-indigo-900 text-sm">2. Live CSV Sync &amp; Date-Range Retrieval</span>
+            <span class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-sm">Connected</span>
+          </div>
+          <p class="text-slate-600 text-xs">Paste your Google Sheet's published <code class="bg-white px-1 rounded font-mono">.csv</code> link in the <strong>Google Sheets Sync &amp; Groq AI</strong> tab.</p>
+          <ul class="list-disc list-inside text-xs text-slate-600 space-y-1 pt-1">
+            <li>Every synced schedule is also saved in your local historical vault so you can recall past schedules anytime using the <strong>From Date</strong> and <strong>To Date</strong> buttons.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-end">
+        <button id="btnCloseAutomateModalBtn" type="button" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold cursor-pointer">
+          Got It, Thanks!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CUSTOM CONFIRMATION MODAL FOR ABSOLUTE RESET (NO NATIVE CONFIRM/ALERT) -->
+  <div id="modalConfirmReset" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-rose-100">
+      <div class="flex items-center space-x-3 text-rose-600 mb-3">
+        <div class="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-xl font-bold shrink-0">
+          🗑️
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Delete All Schedules &amp; Past Info?</h3>
+          <p class="text-xs text-slate-500">Absolute Reset — Includes Sample Circulars</p>
+        </div>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+        This will permanently delete <strong>all active schedules, past circulars, and initial sample notices</strong> so your scheduler starts completely empty. It will remain empty even after refreshing the page.
+      </p>
+      <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-100">
+        <button id="btnCancelResetModal" type="button" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 cursor-pointer">
+          Cancel
+        </button>
+        <button id="btnConfirmAbsoluteReset" type="button" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white shadow-sm cursor-pointer">
+          Yes, Delete All Schedules
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: GENERATED HIGH-RES POSTER IMAGE VIEWER -->
+  <div id="modalPosterImageResult" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/75 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl max-w-4xl w-full p-5 shadow-2xl max-h-[92vh] flex flex-col">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
+        <div>
+          <span class="px-2 py-0.5 text-2xs font-extrabold uppercase bg-emerald-100 text-emerald-800 rounded-full">✓ High-Res PNG Ready</span>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-0.5">Your Generated Poster Image</h3>
+          <p class="text-xs text-slate-500">Check your device's <strong>Downloads</strong> folder — or <strong>Right-Click the image below → "Save image as..."</strong> (on mobile: <strong>Long-Press image → Download/Save</strong>).</p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <a id="directPosterDownloadLink" href="#" download="schedule_poster.png" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-xs flex items-center">
+            ⬇ Save Image File (.PNG)
+          </a>
+          <button type="button" id="btnClosePosterModal" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs cursor-pointer">
+            ✕ Close
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 bg-slate-900 rounded-xl mt-3 flex justify-center items-start custom-scrollbar">
+        <img id="generatedPosterImgPreview" src="" alt="Generated Schedule Poster" class="max-w-full h-auto rounded-lg shadow-2xl border border-white/20">
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- APPLICATION SCRIPT -->
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today = new Date();
+const localISO = d => { const x=new Date(d); return new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,16); };
+const dateISO = d => localISO(d).slice(0,10);
+const fmtDate = v => v ? new Date(v).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+const fmtTime = v => v ? new Date(v).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}) : '';
+const uid = () => 'ev_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8);
+const STORE='circulardrop_v2_state';
+const DEFAULT='ANNA GOVT MODEL HR SEC SCHOOL, PATTEESWARAM';
+let state={events:[],circulars:[],vault:[],cloud:{},filters:{search:'',audience:'ALL',type:'ALL',from:'',to:''}};
+try { const saved=JSON.parse(localStorage.getItem(STORE)||'{}'); state={...state,...saved,filters:{...state.filters,...saved.filters}}; } catch(e){}
+let calDate=new Date(), selectedDay=dateISO(today), parsedRaw='';
+function save(){ try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){toast('Browser storage is full. Export your data for backup.');} }
+function toast(msg){let el=$('appToast');if(!el){el=document.createElement('div');el.id='appToast';el.className='fixed bottom-4 left-1/2 -translate-x-1/2 z-[100] bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-xl';document.body.append(el);}el.textContent=msg;el.classList.remove('hidden');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.add('hidden'),3000);}
+function switchTab(key){const keys=['Dashboard','Dropbox','Calendar','Archive','Posters','WebCard','CloudAi'];const map=['dashboard','dropbox','calendar','archive','posters','webcard','cloudai'];keys.forEach((k,i)=>{const v=$('view'+k),b=$('nav'+k);if(v)v.classList.toggle('hidden',map[i]!==key);if(b){b.classList.toggle('border-indigo-600',map[i]===key);b.classList.toggle('text-indigo-600',map[i]===key);b.classList.toggle('font-semibold',map[i]===key);b.classList.toggle('border-transparent',map[i]!==key);}}); if(key==='dashboard')renderDashboard();if(key==='calendar')renderCalendar();if(key==='archive')renderArchive();if(key==='posters')renderPoster();if(key==='webcard')renderWebCard();if(key==='cloudai')loadCloudFields();window.scrollTo({top:0,behavior:'smooth'});}
+function addEvent(e,raw=''){const ev={id:e.id||uid(),ref:e.ref||'',title:e.title||'Untitled notice',datetime:e.datetime||localISO(new Date(Date.now()+86400000)),deadline:e.deadline||'',audience:e.audience||'All Students',venue:e.venue||'School Campus',category:e.category||'Academic',priority:e.priority||'Medium',notes:e.notes||'',status:e.status||'pending',createdAt:new Date().toISOString()};state.events.push(ev);state.vault=state.vault.filter(x=>x.id!==ev.id);state.vault.push({...ev});if(raw)state.circulars.unshift({id:uid(),ref:ev.ref,title:ev.title,rawText:raw,dateIngested:new Date().toISOString()});save();renderAll();return ev;}
+function syncVault(){state.events.forEach(e=>{const i=state.vault.findIndex(v=>v.id===e.id);if(i>=0)state.vault[i]={...e};else state.vault.push({...e});});}
+function renderDashboard(){
+ const now=new Date(),end=new Date(now);end.setDate(end.getDate()+3);
+ const upcoming=state.events.filter(e=>new Date(e.datetime)>=new Date(now.getFullYear(),now.getMonth(),now.getDate()));
+ const near=upcoming.filter(e=>new Date(e.datetime)<=end);
+ $('statNext3Days').textContent=near.length;$('statDeadlines').textContent=upcoming.filter(e=>e.deadline||e.category==='Examination').length;
+ $('statTotalUpcoming').textContent=upcoming.length;$('statCirculars').textContent=state.circulars.length;$('statVaultCount').textContent=state.vault.length;$('archiveCountBadge').textContent=state.circulars.length;
+ $('nextFewDaysContainer').innerHTML=near.length?near.sort((a,b)=>new Date(a.datetime)-new Date(b.datetime)).map(e=>eventCard(e,true)).join(''):'<div class="col-span-full p-8 text-center text-slate-500">No events in the next 3 days. Add a circular to begin.</div>';
+ renderTimeline();
+}
+function eventCard(e,compact=false){return `<article class="bg-white border border-slate-200 rounded-xl p-4 ${e.status==='completed'?'opacity-70':''}">
+<div class="flex flex-wrap justify-between gap-2"><span class="text-xs font-bold text-indigo-700">${esc(e.category)} · ${esc(e.ref)}</span><span class="text-xs text-slate-500">${esc(fmtDate(e.datetime))} ${esc(fmtTime(e.datetime))}</span></div>
+<h3 class="font-bold text-slate-900 mt-2">${esc(e.title)}</h3><p class="text-xs text-slate-600 mt-1">👥 ${esc(e.audience)}　📍 ${esc(e.venue)}</p>
+${e.deadline?`<p class="text-xs text-rose-600 mt-1">Deadline: ${esc(fmtDate(e.deadline))} ${esc(fmtTime(e.deadline))}</p>`:''}
+${e.notes?`<p class="text-xs text-slate-500 mt-2">${esc(e.notes)}</p>`:''}
+<div class="flex flex-wrap gap-2 mt-3"><button class="text-xs px-3 py-1 rounded bg-indigo-50 text-indigo-700" onclick="downloadSingleIcal('${e.id}')">Export .ics</button><button class="text-xs px-3 py-1 rounded bg-emerald-50 text-emerald-700" onclick="toggleEventComplete('${e.id}')">${e.status==='completed'?'Undo done':'Mark done'}</button><button class="text-xs px-3 py-1 rounded bg-rose-50 text-rose-700" onclick="deleteEvent('${e.id}')">Delete</button></div></article>`;}
+function renderTimeline(){
+ const f=state.filters;let list=(f.from||f.to? [...new Map([...state.vault,...state.events].map(e=>[e.id,e])).values()]:state.events).filter(e=>{
+ const q=f.search.toLowerCase(),hay=[e.title,e.ref,e.venue,e.audience,e.notes].join(' ').toLowerCase();
+ if(q&&!hay.includes(q))return false;if(f.audience!=='ALL'&&!e.audience.toLowerCase().includes(f.audience.toLowerCase()))return false;
+ if(f.type==='DEADLINE'&&!e.deadline&&e.category!=='Examination')return false;if(f.type==='MEETING'&&e.category!=='Meeting')return false;if(f.type==='EXAM'&&e.category!=='Examination')return false;if(f.type==='EVENT'&&['Meeting','Examination'].includes(e.category))return false;
+ if(f.from&&dateISO(e.datetime)<f.from)return false;if(f.to&&dateISO(e.datetime)>f.to)return false;return true;
+ }).sort((a,b)=>new Date(a.datetime)-new Date(b.datetime));
+ $('forthcomingTimelineContainer').innerHTML=list.length?list.map(e=>eventCard(e)).join(''):'<p class="p-8 text-center text-slate-500">No matching schedules found.</p>';
+ $('retrieveModeIndicator').classList.toggle('hidden',!(f.from||f.to));$('streamSectionHeading').textContent=f.from||f.to?'Retrieved Schedules':'Forthcoming & Past Schedules Stream';
+}
+function parseText(t){
+ const lines=t.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ const get=(rx,def='')=>{const m=t.match(rx);return m?m[1].trim():def;};
+ let title=get(/(?:subject|title|regarding)\s*[:\-]\s*([^\n]+)/i,'');
+ if(!title)title=lines.find(x=>x.length>8&&!/school|principal|circular|government/i.test(x))||'School Notice';
+ let dateText=get(/(?:event\s*date|date|on)\s*[:\-]\s*(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})/i,'');
+ let dt=new Date(Date.now()+86400000);if(dateText){const p=dateText.split(/[\/\-]/).map(Number);let y=p[2]<100?2000+p[2]:p[2];dt=new Date(y,p[1]-1,p[0],10,0);}
+ const time=get(/(?:time|at)\s*[:\-]?\s*(\d{1,2}:\d{2}\s*(?:am|pm)?)/i,'');if(time){const m=time.match(/(\d{1,2}):(\d{2})\s*(am|pm)?/i);if(m){let h=+m[1];if(m[3]?.toLowerCase()==='pm'&&h<12)h+=12;if(m[3]?.toLowerCase()==='am'&&h===12)h=0;dt.setHours(h,+m[2]);}}
+ const deadlineText=get(/(?:deadline|last date|submit by)\s*[:\-]\s*(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})/i,'');let deadline='';if(deadlineText){const p=deadlineText.split(/[\/\-]/).map(Number);deadline=localISO(new Date(p[2]<100?2000+p[2]:p[2],p[1]-1,p[0],17));}
+ const audience=get(/(?:for whom|audience|to)\s*[:\-]\s*([^\n]+)/i,/teacher/i.test(t)?'Teachers':/parent/i.test(t)?'Parents':'Students');
+ const venue=get(/(?:venue|place|location)\s*[:\-]\s*([^\n]+)/i,'School Campus');
+ let category=/exam|test|marks|assessment/i.test(t)?'Examination':/meeting|council|briefing/i.test(t)?'Meeting':/sport|cultural|competition|exhibition/i.test(t)?'Sports/Cultural':/fee|scholarship|admission/i.test(t)?'Administrative':'Academic';
+ return {ref:get(/(?:ref(?:erence)?|circular\s*no)\s*[:#\-]?\s*([A-Z0-9\/_-]+)/i,'AGMHSS/'+new Date().getFullYear()+'/'+Math.floor(Math.random()*900+100)),title,datetime:localISO(dt),deadline,audience,venue,category,priority:/urgent|immediate|tomorrow|deadline/i.test(t)?'High':'Medium',notes:t.slice(0,500)};
+}
+function review(e){$('parsedRef').value=e.ref;$('parsedTitle').value=e.title;$('parsedDateTime').value=e.datetime;$('parsedDeadline').value=e.deadline||'';$('parsedAudience').value=e.audience;$('parsedVenue').value=e.venue;$('parsedCategory').value=e.category;$('parsedPriority').value=e.priority;$('parsedNotes').value=e.notes||'';$('parseReviewSection').classList.remove('hidden');$('parseReviewSection').scrollIntoView({behavior:'smooth'});}
+function saveParsed(ev){ev.preventDefault();const e={ref:$('parsedRef').value,title:$('parsedTitle').value,datetime:$('parsedDateTime').value,deadline:$('parsedDeadline').value,audience:$('parsedAudience').value,venue:$('parsedVenue').value,category:$('parsedCategory').value,priority:$('parsedPriority').value,notes:$('parsedNotes').value};if(!e.datetime){toast('Please enter an event date and time.');return;}addEvent(e,parsedRaw);$('parseReviewSection').classList.add('hidden');$('circularTextInput').value='';switchTab('dashboard');toast('Circular saved to schedule.');}
+function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();$('calMonthTitle').textContent=calDate.toLocaleDateString('en-IN',{month:'long',year:'numeric'});let out='';for(let i=0;i<first;i++)out+='<div></div>';for(let d=1;d<=days;d++){const key=dateISO(new Date(y,m,d)),events=state.events.filter(e=>dateISO(e.datetime)===key),sel=key===selectedDay;out+=`<button data-day="${key}" class="min-h-[65px] sm:min-h-[88px] text-left p-1.5 border rounded-lg ${sel?'border-indigo-500 bg-indigo-50':'border-slate-100 bg-white'}"><span class="text-xs font-bold">${d}</span>${events.slice(0,2).map(e=>`<span class="block mt-1 text-[10px] truncate rounded px-1 bg-indigo-100 text-indigo-800">${esc(e.title)}</span>`).join('')}${events.length>2?`<small>+${events.length-2}</small>`:''}</button>`;} $('calGrid').innerHTML=out;$('calSelectedDayTitle').textContent='Events on '+fmtDate(selectedDay);const evs=state.events.filter(e=>dateISO(e.datetime)===selectedDay);$('calSelectedDayList').innerHTML=evs.length?evs.map(e=>eventCard(e)).join(''):'<p class="text-xs text-slate-500">No events on this date.</p>';}
+function renderArchive(){ $('rawCircularsCount').textContent=state.circulars.length;$('circularsListContainer').innerHTML=state.circulars.length?state.circulars.map(c=>`<article class="p-4 border rounded-xl"><div class="font-bold text-sm">${esc(c.title)} <span class="text-xs text-indigo-600">${esc(c.ref)}</span></div><p class="text-xs text-slate-400">${fmtDate(c.dateIngested)}</p><pre class="text-xs whitespace-pre-wrap bg-slate-50 p-3 mt-2 rounded">${esc(c.rawText)}</pre></article>`).join(''):'<p class="text-sm text-slate-500">No circulars archived yet.</p>';archiveRetrieve();}
+function archiveRetrieve(){const a=$('archiveFromDate').value,b=$('archiveToDate').value;const all=[...new Map([...state.vault,...state.events].map(e=>[e.id,e])).values()].filter(e=>(!a||dateISO(e.datetime)>=a)&&(!b||dateISO(e.datetime)<=b)).sort((x,y)=>new Date(x.datetime)-new Date(y.datetime));$('archiveRetrieveCountBadge').textContent=all.length+' records';$('archiveRetrievedEventsList').innerHTML=all.length?all.map(e=>eventCard(e)).join(''):'<p class="text-xs text-slate-500">No schedules found in this date range.</p>';}
+function renderPoster(){const mode=$('posterGroupMode').value,lang=$('posterLanguage').value,school=$('posterSchoolName').value||DEFAULT,sub=$('posterSubtitle').value||'FORTHCOMING EVENTS';let list=[...state.events].sort((a,b)=>new Date(a.datetime)-new Date(b.datetime));if(mode==='people_students')list=list.filter(e=>/student|class|std/i.test(e.audience));if(mode==='people_teachers')list=list.filter(e=>/teacher|staff|faculty|hod/i.test(e.audience));if(mode==='eventwise')list.sort((a,b)=>a.category.localeCompare(b.category));const title=lang==='ta'?'வரவிருக்கும் நிகழ்வுகள்':lang==='bilingual'?'வரவிருக்கும் நிகழ்வுகள் • UPCOMING EVENTS':'UPCOMING EVENTS';$('posterLivePreview').innerHTML=`<div id="posterPrintable" class="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 text-white p-6 sm:p-10"><div class="text-center border-b border-white/20 pb-6"><div class="text-3xl mb-2">🏫</div><h2 class="text-xl sm:text-2xl font-black">${esc(school)}</h2><p class="text-amber-300 font-bold mt-3">${esc(title)}</p><p class="text-sm text-slate-300 mt-1">${esc(sub)}</p></div><div class="grid gap-3 mt-6">${list.length?list.map(e=>`<div class="bg-white text-slate-900 rounded-xl p-4 border-l-4 border-amber-400"><div class="text-xs text-indigo-700 font-bold">${esc(e.category)} · ${esc(fmtDate(e.datetime))} ${esc(fmtTime(e.datetime))}</div><h3 class="font-extrabold text-lg mt-1">${esc(e.title)}</h3><p class="text-xs mt-1">👥 ${esc(e.audience)}　📍 ${esc(e.venue)}</p>${e.deadline?`<p class="text-xs text-rose-600 mt-1">Deadline: ${esc(fmtDate(e.deadline))}</p>`:''}</div>`).join(''):'<p class="text-center p-8 text-slate-300">No schedules added yet.</p>'}</div><p class="text-center text-xs text-slate-300 mt-6">Generated ${fmtDate(new Date())} · CircularDrop</p></div>`;}
+function webCardHTML(){const audience=$('widgetAudienceFilter').value,theme=$('widgetColorTheme').value,title=$('widgetHeaderTitle').value||DEFAULT;let list=state.events.filter(e=>audience==='ALL'||e.audience.toLowerCase().includes(audience.toLowerCase()));return `<!doctype html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${esc(title)}</title><style>body{font:15px Arial;background:#f1f5f9;padding:16px}.card{max-width:850px;margin:auto;background:white;border-radius:18px;padding:22px;border-top:8px solid ${theme==='emerald'?'#059669':theme==='royal'?'#1e3a8a':'#7c3aed'};box-shadow:0 8px 30px #0001}article{padding:14px;margin:10px 0;border:1px solid #e2e8f0;border-radius:12px}h2{margin-top:0;color:#1e293b}</style><div class="card"><h2>${esc(title)}</h2>${list.length?list.map(e=>`<article><b>${esc(e.title)}</b><p>${esc(fmtDate(e.datetime))} ${esc(fmtTime(e.datetime))} · ${esc(e.venue)}</p><small>${esc(e.audience)} · ${esc(e.category)}</small></article>`).join(''):'<p>No upcoming events.</p>'}</div></html>`;}
+function renderWebCard(){const code=webCardHTML();$('webCardCodeTextarea').value=code;$('webCardLiveContainer').innerHTML=`<div class="bg-white border rounded-2xl p-4 shadow-sm"><h3 class="font-bold mb-3">${esc($('widgetHeaderTitle').value)}</h3>${state.events.length?state.events.map(e=>`<div class="p-3 border-b"><b>${esc(e.title)}</b><p class="text-xs text-slate-500">${fmtDate(e.datetime)} · ${esc(e.venue)}</p></div>`).join(''):'<p class="text-sm text-slate-500">No events available.</p>'}</div>`;}
+function ics(events){const stamp=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CircularDrop//EN',...events.flatMap(e=>['BEGIN:VEVENT','UID:'+e.id+'@circulardrop','DTSTAMP:'+stamp(new Date()),'DTSTART:'+stamp(e.datetime),'DTEND:'+stamp(new Date(new Date(e.datetime).getTime()+3600000)),'SUMMARY:'+String(e.title).replace(/[,;]/g,' '),'LOCATION:'+String(e.venue||'').replace(/[,;]/g,' '),'DESCRIPTION:'+String(e.notes||'').replace(/[\r\n]/g,' '),'END:VEVENT']),'END:VCALENDAR'].join('\r\n');}
+function download(content,name,type){const u=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+window.downloadSingleIcal=id=>{const e=state.events.find(x=>x.id===id)||state.vault.find(x=>x.id===id);if(e)download(ics([e]),'circular-'+id+'.ics','text/calendar');};
+window.toggleEventComplete=id=>{const e=state.events.find(x=>x.id===id);if(e){e.status=e.status==='completed'?'pending':'completed';syncVault();save();renderAll();}};
+window.deleteEvent=id=>{if(!confirm('Delete this event from the active schedule? It will remain in the history vault.'))return;state.events=state.events.filter(x=>x.id!==id);save();renderAll();};
+function renderAll(){renderDashboard();if(!$('viewCalendar').classList.contains('hidden'))renderCalendar();if(!$('viewArchive').classList.contains('hidden'))renderArchive();if(!$('viewPosters').classList.contains('hidden'))renderPoster();if(!$('viewWebCard').classList.contains('hidden'))renderWebCard();}
+function loadCloudFields(){const c=state.cloud||{};$('groqApiKeyInput').value=c.groqKey||'';$('groqModelSelect').value=c.model||'qwen/qwen3-32b';$('cloudSheetUrlInput').value=c.sheetUrl||'';$('cloudWebhookUrlInput').value=c.webhookUrl||'';$('chkAutoSyncCloud').checked=!!c.auto;}
+function saveCloud(){state.cloud={groqKey:$('groqApiKeyInput').value.trim(),model:$('groqModelSelect').value,sheetUrl:$('cloudSheetUrlInput').value.trim(),webhookUrl:$('cloudWebhookUrlInput').value.trim(),auto:$('chkAutoSyncCloud').checked};save();$('groqStatusBadge').textContent=state.cloud.groqKey?'Groq key saved':'Using Built-In Regex';$('cloudSyncStatusBadge').textContent=state.cloud.sheetUrl?'Configured':'Local Mode';$('navSyncStatusDot').className='w-2 h-2 rounded-full '+(state.cloud.sheetUrl?'bg-emerald-500':'bg-slate-300');toast('Settings saved in this browser.');}
+async function groqParse(text){const key=(state.cloud.groqKey||$('groqQuickKeyInput').value).trim();if(!key)return null;const model=$('groqModelSelect').value;const res=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model,temperature:0.1,response_format:{type:'json_object'},messages:[{role:'system',content:'Extract one school event from notice. Return JSON fields ref,title,datetime,deadline,audience,venue,category,priority,notes. Dates must be local ISO datetime YYYY-MM-DDTHH:mm. If unclear use blank strings. Do not invent facts.'},{role:'user',content:text}]})});if(!res.ok)throw new Error('Groq request failed: '+res.status);const data=await res.json();return JSON.parse(data.choices[0].message.content);}
+async function pullSheet(){const url=$('cloudSheetUrlInput').value.trim();if(!url){toast('Add a published CSV or JSON URL first.');return;}try{$('cloudSyncStatusBadge').textContent='Syncing…';const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);const body=await r.text();let rows;if(url.toLowerCase().includes('.json')||body.trim().startsWith('[')||body.trim().startsWith('{')){const j=JSON.parse(body);rows=Array.isArray(j)?j:(j.events||j.data||[]);}else{const lines=body.trim().split(/\r?\n/);const heads=csvLine(lines.shift()).map(x=>x.toLowerCase());rows=lines.map(line=>Object.fromEntries(csvLine(line).map((v,i)=>[heads[i],v])));}let n=0;rows.forEach(row=>{const e={ref:row.ref||row.reference||row.circularno,title:row.title||row.event||row.subject,datetime:row.datetime||row.date,deadline:row.deadline||'',audience:row.audience||row.forwhom||'Students',venue:row.venue||'School Campus',category:row.category||'Academic',priority:row.priority||'Medium',notes:row.notes||''};if(e.title&&e.datetime&&!state.events.some(x=>x.ref&&x.ref===e.ref)){addEvent(e);n++;}});$('cloudSyncStatusBadge').textContent='Synced';toast('Imported '+n+' new event(s).');}catch(e){$('cloudSyncStatusBadge').textContent='Sync failed';toast('Sync failed: '+e.message);}}
+function csvLine(line){const out=[];let v='',q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&line[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){out.push(v);v='';}else v+=c;}out.push(v);return out;}
+const samples=[
+'Circular No: AGMHSS/2026/SPORTS/01\nSubject: Annual Sports Day\nDate: 15/11/2026\nTime: 9:00 AM\nFor Whom: All Students\nVenue: School Sports Ground\nDeadline: 12/11/2026\nAll students should participate.',
+'Ref: AGMHSS/2026/EXAM/02\nSubject: Exam Fee & Internal Marks Submission\nDate: 18/11/2026\nTime: 10:00 AM\nFor Whom: Students and Teachers\nVenue: Examination Cell\nDeadline: 16/11/2026',
+'Circular No: AGMHSS/2026/MEET/03\nSubject: Staff Academic Council Meeting\nDate: 20/11/2026\nTime: 3:00 PM\nFor Whom: All Teachers and HODs\nVenue: Conference Hall A'
+];
+function closeModal(id){const e=$(id);if(e)e.classList.add('hidden');}
+function openModal(id){const e=$(id);if(e)e.classList.remove('hidden');}
+function bind(id,fn){const e=$(id);if(e)e.addEventListener('click',fn);}
+['Dashboard','Dropbox','Calendar','Archive','Posters','WebCard','CloudAi'].forEach((x,i)=>bind('nav'+x,()=>switchTab(['dashboard','dropbox','calendar','archive','posters','webcard','cloudai'][i])));
+bind('btnOpenDropbox',()=>switchTab('dropbox'));bind('btnOpenPostersHeader',()=>switchTab('posters'));bind('btnGoToCloudAiTab',()=>switchTab('cloudai'));
+bind('btnOpenAutomateModal',()=>openModal('automateModal'));bind('btnCloseAutomateModal',()=>closeModal('automateModal'));bind('btnCloseAutomateModalBtn',()=>closeModal('automateModal'));bind('btnClosePosterModal',()=>closeModal('posterModal'));bind('btnCancelResetModal',()=>closeModal('resetModal'));
+bind('btnConfirmAbsoluteReset',()=>{if(confirm('Permanently delete all events, circular history and archive records from this browser?')){state.events=[];state.vault=[];state.circulars=[];save();renderAll();closeModal('resetModal');toast('All local records deleted.');}});
+bind('btnClearAllDashboard',()=>{if(confirm('Clear all active schedules? They will remain in the history vault.')){syncVault();state.events=[];save();renderAll();}});
+bind('btnResetData',()=>{if(confirm('Delete ALL active schedules, archive records and circular texts? This cannot be undone.')){state.events=[];state.vault=[];state.circulars=[];save();renderAll();toast('All data reset.');}});
+bind('btnParseCircular',async()=>{const t=$('circularTextInput').value.trim();if(!t){toast('Paste or upload circular text first.');return;}parsedRaw=t;let e;try{e=await groqParse(t);}catch(err){toast(err.message+' — using built-in parser.');}review(e||parseText(t));});
+bind('btnClearText',()=>{$('circularTextInput').value='';$('fileInput').value='';});
+bind('btnCancelParsed',()=>{$('parseReviewSection').classList.add('hidden');parsedRaw='';});
+$('extractedEventForm')?.addEventListener('submit',saveParsed);
+['btnSample1','btnSample2','btnSample3'].forEach((id,i)=>bind(id,()=>{$('circularTextInput').value=samples[i];toast('Sample circular loaded. Click Analyze & Extract Events.');}));
+bind('btnSaveQuickGroqKey',()=>{state.cloud.groqKey=$('groqQuickKeyInput').value.trim();save();toast('Groq key saved locally.');});
+$('fileInput')?.addEventListener('change',async ev=>{const f=ev.target.files[0];if(!f)return;try{if(f.type.startsWith('text/')||/\.(txt|csv)$/i.test(f.name)){$('circularTextInput').value=await f.text();toast('Text file loaded.');}else if(f.type==='application/pdf'){toast('PDF selected. For text extraction, copy its text and paste it here; scanned PDFs need OCR.');}else if(f.type.startsWith('image/')){toast('Image selected. OCR is not built into this offline version; paste the recognized text.');}else{toast('This file type needs conversion to plain text before parsing.');}}catch(e){toast('Could not read file.');}});
+$('dropZone')?.addEventListener('dragover',e=>{e.preventDefault();$('dropZone').classList.add('border-indigo-600');});$('dropZone')?.addEventListener('dragleave',()=>$('dropZone').classList.remove('border-indigo-600'));$('dropZone')?.addEventListener('drop',e=>{e.preventDefault();$('dropZone').classList.remove('border-indigo-600');const f=e.dataTransfer.files[0];if(f){const dt=new DataTransfer();dt.items.add(f);$('fileInput').files=dt.files;$('fileInput').dispatchEvent(new Event('change'));}});
+bind('btnRetrieveByDate',()=>{state.filters.from=$('retrieveFromDate').value;state.filters.to=$('retrieveToDate').value;renderTimeline();});bind('btnClearDateFilter',()=>{state.filters.from=state.filters.to='';$('retrieveFromDate').value=$('retrieveToDate').value='';renderTimeline();});
+$('searchInput')?.addEventListener('input',e=>{state.filters.search=e.target.value;renderTimeline();});$('filterAudience')?.addEventListener('change',e=>{state.filters.audience=e.target.value;renderTimeline();});$('filterType')?.addEventListener('change',e=>{state.filters.type=e.target.value;renderTimeline();});
+bind('btnCalPrev',()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar();});bind('btnCalNext',()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar();});bind('btnCalToday',()=>{calDate=new Date();selectedDay=dateISO(today);renderCalendar();});
+$('calGrid')?.addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(b){selectedDay=b.dataset.day;renderCalendar();}});
+bind('btnArchiveRetrieve',archiveRetrieve);bind('btnArchiveClearFilter',()=>{$('archiveFromDate').value=$('archiveToDate').value='';archiveRetrieve();});
+bind('btnLoadDemoSamplesArchive',()=>{samples.forEach(t=>addEvent(parseText(t),t));toast('Three demo circulars added.');});
+bind('btnExportAllIcal',()=>download(ics(state.events),'circulardrop-all-events.ics','text/calendar'));
+['posterGroupMode','posterLanguage','posterTheme','posterSchoolName','posterSubtitle'].forEach(id=>$(id)?.addEventListener('change',renderPoster));
+bind('btnDownloadPosterPng',()=>{const node=$('posterPrintable');if(!node){toast('Poster preview is not ready.');return;}const w=window.open('','_blank');if(!w){toast('Allow pop-ups to print the poster.');return;}w.document.write('<html><head><title>School Poster</title><style>body{font-family:Arial;padding:20px}'+Array.from(document.styleSheets).map(()=> '').join('')+'</style></head><body>'+node.outerHTML+'<script>window.onload=()=>window.print()<\/script></body></html>');w.document.close();});
+bind('btnDownloadPosterHtml',()=>download($('posterPrintable')?.outerHTML||'<p>No poster</p>','school-schedule-poster.html','text/html'));
+bind('btnAiTranslateTamil',()=>{toast('Tamil preview uses the built-in bilingual labels. Add a Groq key for AI-assisted notice extraction.');});
+['widgetAudienceFilter','widgetColorTheme','widgetHeaderTitle'].forEach(id=>$(id)?.addEventListener('input',renderWebCard));
+bind('btnDownloadWebCardHtml',()=>download(webCardHTML(),'school-events-card.html','text/html'));
+bind('btnCopyWebCardCode',async()=>{try{await navigator.clipboard.writeText(webCardHTML());toast('HTML code copied.');}catch(e){$('webCardCodeTextarea').select();document.execCommand('copy');toast('HTML code copied.');}});
+bind('btnToggleGroqKey',()=>{const e=$('groqApiKeyInput');e.type=e.type==='password'?'text':'password';$('btnToggleGroqKey').textContent=e.type==='password'?'Show':'Hide';});
+bind('btnClearGroqKey',()=>{if(confirm('Remove the saved Groq API key?')){$('groqApiKeyInput').value='';state.cloud.groqKey='';save();toast('API key removed.');}});
+bind('btnSaveGroqKey',saveCloud);bind('btnTestGroqKey',async()=>{saveCloud();if(!state.cloud.groqKey){toast('Enter a Groq API key first.');return;}try{await groqParse('Subject: Test notice\\nDate: 20/11/2026');toast('Groq connection successful.');}catch(e){toast('Groq test failed: '+e.message);}});
+bind('btnCopyAppsScript',()=>copyText("function doPost(e){const data=JSON.parse(e.postData.contents);const sh=SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];sh.appendRow([data.ref,data.title,data.datetime,data.deadline,data.audience,data.venue,data.category,data.priority,data.notes]);return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);}"));
+bind('btnCopyDriveFolderScript',()=>copyText("function scanIncomingCirculars(){const folder=DriveApp.getFoldersByName('Incoming Circulars').hasNext()?DriveApp.getFoldersByName('Incoming Circulars').next():null;if(!folder)throw new Error('Create Incoming Circulars folder first.');Logger.log('Folder ready: '+folder.getName());}"));
+bind('btnCopyDriveScriptModal',()=>copyText("function scanIncomingCirculars(){const f=DriveApp.getFoldersByName('Incoming Circulars');if(!f.hasNext())throw new Error('Create folder Incoming Circulars');Logger.log(f.next().getName());}"));
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('Script copied.');}catch(e){toast('Clipboard unavailable in this browser.');}}
+bind('btnExportCsvSheet',()=>{const head=['ref','title','datetime','deadline','audience','venue','category','priority','notes'];const rows=[head,...state.events.map(e=>head.map(k=>String(e[k]||'').replace(/"/g,'""')))];download(rows.map(r=>r.map(v=>'"'+v+'"').join(',')).join('\r\n'),'circulardrop-sheet-template.csv','text/csv');});
+bind('btnExportJsonFeed',()=>download(JSON.stringify({events:state.events},null,2),'circulardrop-events.json','application/json'));
+bind('btnLoadDemoJsonFeed',()=>{samples.forEach(t=>addEvent(parseText(t),t));toast('Demo feed loaded.');});
+bind('btnSaveCloudConfig',saveCloud);bind('btnPullCloudSync',pullSheet);
+bind('btnClosePosterModal',()=>closeModal('posterModal'));
+$('automateModal')?.addEventListener('click',e=>{if(e.target===$('automateModal'))closeModal('automateModal');});
+$('resetModal')?.addEventListener('click',e=>{if(e.target===$('resetModal'))closeModal('resetModal');});
+$('cloudSheetUrlInput')?.addEventListener('change',()=>{state.cloud.sheetUrl=$('cloudSheetUrlInput').value;save();});
+if(state.cloud.auto&&state.cloud.sheetUrl){setTimeout(pullSheet,1200);}
+$('currentDateDisplay').textContent=today.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+loadCloudFields();renderAll();renderPoster();renderWebCard();
+})();
+</script>
+</body>
+</html>
