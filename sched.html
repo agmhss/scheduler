@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம் — நிகழ்வுகள் போஸ்டர் ஸ்டுடியோ</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta+Malar:wght@500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --poster-bg-start: #2e1065;
+      --poster-bg-mid: #3b0764;
+      --poster-bg-end: #1e1b4b;
+      --poster-gold: #f59e0b;
+      --poster-gold-light: #fde68a;
+      --poster-card-bg: #fffbeb;
+      --poster-card-border: #fcd34d;
+    }
+    body {
+      font-family: 'Noto Sans Tamil', 'Mukta Malar', 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .poster-shell {
+      background: linear-gradient(165deg, var(--poster-bg-start) 0%, var(--poster-bg-mid) 52%, var(--poster-bg-end) 100%);
+      border: 3px solid var(--poster-gold);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 2px rgba(253, 230, 138, 0.28);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .poster-inner-frame {
+      border: 1.5px dashed rgba(253, 230, 138, 0.45);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .parchment-card {
+      background: linear-gradient(180deg, #fffdf5 0%, #fef3c7 100%);
+      border: 2px solid #f59e0b;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      color: #1e1b4b;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 4px;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: pre-line;
+      max-width: 100%;
+    }
+    [contenteditable="true"]:hover {
+      background-color: rgba(245, 158, 11, 0.14);
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.45);
+    }
+    [contenteditable="true"]:focus {
+      background-color: rgba(254, 243, 199, 0.95);
+      color: #1e1b4b !important;
+      box-shadow: 0 0 0 2px #f59e0b;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    .poster-header-editable[contenteditable="true"]:focus {
+      background-color: rgba(30, 27, 75, 0.9);
+      color: #fde68a !important;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(90deg, #fef08a 0%, #fbbf24 50%, #fef08a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hide-in-clean .edit-ui-control {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-14">
+
+  <!-- Top App Bar -->
+  <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-amber-500/30 px-4 py-3">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-bold text-xl shadow">
+          🏛️
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold text-amber-300 tracking-tight">
+              AGMHSS பட்டீஸ்வரம் — தமிழ் நிகழ்வுகள் போஸ்டர் ஸ்டுடியோ
+            </h1>
+            <span id="syncStatusPill" class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium">
+              Drive Sync Ready
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">
+            Incoming Circulars நேரடி இணைப்பு • பிழையற்ற தமிழ் • உயர்தர PNG & GitHub Pages தயார்
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="btnOpenAppsScriptModal" type="button" class="px-3 py-1.5 rounded-lg bg-indigo-700 hover:bg-indigo-600 text-amber-200 border border-amber-400/40 text-xs sm:text-sm font-semibold transition flex items-center gap-1.5">
+          <span>📜</span> <span>Apps Script Code</span>
+        </button>
+        <button id="btnAddDayModal" type="button" class="px-3 py-1.5 rounded-lg bg-purple-700 hover:bg-purple-600 text-amber-200 border border-amber-400/40 text-xs sm:text-sm font-semibold transition flex items-center gap-1.5">
+          <span>＋</span> <span>புதிய நாள் சேர்</span>
+        </button>
+        <button id="btnCopyWhatsapp" type="button" class="px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs sm:text-sm font-semibold transition flex items-center gap-1.5">
+          <span>📋</span> <span>WhatsApp உரை</span>
+        </button>
+        <button id="btnDownloadPng" type="button" class="px-4 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg transition flex items-center gap-1.5">
+          <span>🖼️</span> <span>Download PNG Poster</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="max-w-6xl mx-auto px-3 sm:px-6 pt-5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+    <!-- Left Control & Quick Actions Sidebar -->
+    <section class="lg:col-span-4 space-y-4">
+
+      <!-- NEW: Live Google Drive "Incoming Circulars" Apps Script Sync Card -->
+      <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xs sm:text-sm font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+            <span>☁️</span> <span>Incoming Circulars (Drive Sync)</span>
+          </h2>
+          <button id="btnShowScriptFromCard" type="button" class="text-[11px] px-2 py-0.5 rounded-lg bg-indigo-950 hover:bg-indigo-900 text-indigo-200 border border-indigo-500/40 font-semibold transition">
+            Code.gs பெறு ↗
+          </button>
+        </div>
+
+        <div>
+          <label for="inputAppsScriptUrl" class="block text-[11px] text-slate-300 font-medium mb-1">
+            Apps Script Web App URL (அல்லது Google Sheet CSV/JSON)
+          </label>
+          <input
+            id="inputAppsScriptUrl"
+            type="url"
+            placeholder="https://script.google.com/macros/s/.../exec"
+            class="w-full rounded-xl bg-slate-800 border border-slate-700 text-slate-100 text-xs px-3 py-2 focus:outline-none focus:border-amber-400"
+          />
+        </div>
+
+        <div class="flex items-center justify-between gap-2">
+          <label class="inline-flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+            <input id="chkAutoSyncDrive" type="checkbox" class="rounded border-slate-600 text-amber-400 focus:ring-amber-400" />
+            <span>பக்கம் திறக்கும்போது தானாக ஒத்திசை (Auto-Sync)</span>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button id="btnSyncDriveNow" type="button" class="col-span-2 py-2 px-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-extrabold shadow transition flex items-center justify-center gap-1.5">
+            <span>🔄</span> <span>Drive-ல் இருந்து நிகழ்வுகளைப் பெறு (Sync Now)</span>
+          </button>
+        </div>
+
+        <p id="syncLastStatusText" class="text-[11px] text-slate-400 leading-snug">
+          Folder ID: <code class="text-amber-200">1L5K_ALKNcp3y92-QEmNTXDKNerV5YF2m</code> (Incoming Circulars)
+        </p>
+      </div>
+
+      <!-- View & Theme Controls Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-4">
+        <h2 class="text-sm font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+          <span>🎨</span> <span>போஸ்டர் அமைப்புகள் (Poster Controls)</span>
+        </h2>
+
+        <!-- Horizon Filter -->
+        <div>
+          <label class="block text-xs text-slate-300 font-medium mb-1.5">கால வரம்பு (Schedule Window)</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button id="btnFilterUpcoming" type="button" class="px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-amber-500/20 border-amber-400 text-amber-200">
+              வரவிருக்கும் (நவ 12–20)
+            </button>
+            <button id="btnFilterAll" type="button" class="px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600">
+              முழு அட்டவணை (நவ 10–20)
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Selector -->
+        <div>
+          <label for="selectTheme" class="block text-xs text-slate-300 font-medium mb-1.5">வண்ணத் தீம் (Royal Theme)</label>
+          <select id="selectTheme" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-slate-100 text-xs sm:text-sm px-3 py-2 focus:outline-none focus:border-amber-400">
+            <option value="purple">👑 அரச ஊதா & தங்கம் (Royal Purple & Gold)</option>
+            <option value="maroon">🌺 தஞ்சை மெரூன் & தங்கம் (Temple Maroon & Gold)</option>
+            <option value="emerald">🌿 மரகதப் பச்சை & தங்கம் (Emerald Campus & Gold)</option>
+            <option value="sapphire">💎 நீலக்கல் & தங்கம் (Sapphire Night & Gold)</option>
+          </select>
+        </div>
+
+        <!-- Clean Preview Mode Toggle -->
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800">
+          <div>
+            <p class="text-xs font-semibold text-slate-200">திருத்தும் பொத்தான்களை மறை (Clean View)</p>
+            <p class="text-[11px] text-slate-400">போஸ்டரை அச்சு வடிவில் பார்க்க</p>
+          </div>
+          <button id="btnToggleCleanMode" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-amber-300 border border-slate-700 transition">
+            காண்பி / மறை
+          </button>
+        </div>
+
+        <!-- Reset Button -->
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-2">
+          <button id="btnResetDefault" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800/90 hover:bg-rose-950/60 hover:border-rose-500/40 border border-slate-700 text-xs text-slate-300 hover:text-rose-200 font-medium transition">
+            🔄 அசல் சுற்றறிக்கை தரவுகளுக்கு மீட்டமை (Reset)
+          </button>
+        </div>
+      </div>
+
+      <!-- Synced Sources Summary Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+            <span>📂</span> <span>இணைக்கப்பட்ட ஆதாரங்கள் (Synced Sources)</span>
+          </h3>
+          <span id="statBadgeCount" class="text-[11px] px-2 py-0.5 rounded-full bg-purple-900/70 text-amber-200 border border-amber-400/30 font-semibold">
+            3 நாட்கள் • 4 நிகழ்வுகள்
+          </span>
+        </div>
+        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+          <li class="flex items-start gap-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/70">
+            <span>🖼️</span>
+            <div>
+              <p class="font-semibold text-slate-100">Incoming Circulars / image.jpg</p>
+              <p class="text-[11px] text-slate-400">நவ 10–20 நிகழ்வுகள் (AI Physics/Chemistry, Exposure Visit, குழந்தைகள் தினம், 2nd Mid Term Exams)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/70">
+            <span>📄</span>
+            <div>
+              <p class="font-semibold text-slate-100">Tamil Pechu Engal Uyir Muchu.pdf</p>
+              <p class="text-[11px] text-slate-400">நவ 11, 12, 13 காலை 9.30 மணி — தமிழ் ஆசிரியர்கள் திறன் மேம்பாட்டுப் பயிற்சி (தஞ்சாவூர்)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/70">
+            <span>🌐</span>
+            <div>
+              <p class="font-semibold text-slate-100">GitHub Pages + Apps Script</p>
+              <p class="text-[11px] text-slate-400">Incoming Circulars கோப்புறையில் புதிய சுற்றறிக்கை போட்டவுடன் நேரடியாக போஸ்டரில் ஏற்றப்படும்.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Right Live Vertical Tamil Poster Canvas -->
+    <section class="lg:col-span-8 flex flex-col items-center">
+      <div id="posterWrapper" class="w-full max-w-[540px] PosterContainer">
+        <div id="posterElement" class="poster-shell rounded-3xl p-3 sm:p-4 transition-all duration-300">
+          <div class="poster-inner-frame rounded-2xl p-3.5 sm:p-5 space-y-3.5">
+
+            <!-- Decorative Corner Motifs -->
+            <div class="flex items-center justify-between text-amber-300/80 text-xs select-none px-1">
+              <span>❈ ❁ ❈</span>
+              <span class="text-[11px] tracking-widest uppercase text-amber-200/90 font-semibold">CircularDrop • AGMHSS</span>
+              <span>❈ ❁ ❈</span>
+            </div>
+
+            <!-- Poster Header Block -->
+            <div class="text-center space-y-1.5 pb-3 border-b-2 border-amber-400/50 px-1">
+              <div class="inline-flex items-center justify-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-400/20 border border-amber-300/50 text-amber-200 text-[11px] sm:text-xs font-bold max-w-full">
+                <span class="shrink-0">🏫</span>
+                <span id="posterSchoolBadge" contenteditable="true" class="poster-header-editable break-words">பள்ளிக் கல்வித் துறை — தஞ்சாவூர் மாவட்டம்</span>
+              </div>
+
+              <h2 id="posterSchoolName" contenteditable="true" class="poster-header-editable text-base sm:text-lg font-extrabold text-amber-300 leading-snug pt-1 break-words px-1">
+                அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்
+              </h2>
+
+              <div class="py-0.5">
+                <h3 id="posterMainTitle" contenteditable="true" class="poster-header-editable text-lg sm:text-xl font-black text-white tracking-wide drop-shadow break-words px-1">
+                  வரவிருக்கும் நிகழ்வுகள்
+                </h3>
+              </div>
+
+              <div class="inline-block max-w-full bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-1 rounded-full shadow">
+                <span id="posterSubtitle" contenteditable="true" class="break-words">13.11.2026 முதல் 20.11.2026 வரை</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Stacked Day Cards Container -->
+            <div id="dayCardsContainer" class="space-y-3">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Poster Footer Block -->
+            <div class="pt-2.5 border-t-2 border-amber-400/50 text-center space-y-1 px-2">
+              <p id="posterFooterLine1" contenteditable="true" class="poster-header-editable text-xs font-bold text-amber-200 break-words"></p>
+              <p id="posterFooterLine2" contenteditable="true" class="poster-header-editable text-[11px] text-amber-100/80 break-words">
+                AGMHSS பட்டீஸ்வரம்
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal 1: Add New Day Card Modal -->
+  <div id="modalAddDay" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
+          <span>📅</span> <span>புதிய நாள் & நிகழ்வு சேர் (Add Day Card)</span>
+        </h3>
+        <button id="btnCloseAddDay" type="button" class="text-slate-400 hover:text-white text-lg font-bold px-2">×</button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm">
+        <div>
+          <label for="inputNewDate" class="block text-slate-300 font-medium mb-1">தேதி (Date — DD.MM.YYYY அல்லது YYYY-MM-DD)</label>
+          <input id="inputNewDate" type="date" value="2026-11-15" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-3 py-2 focus:outline-none focus:border-amber-400" />
+        </div>
+        <div>
+          <label for="inputNewDayLabel" class="block text-slate-300 font-medium mb-1">தமிழ் கிழமை / சிறப்புக் குறிப்பு (Day Label)</label>
+          <input id="inputNewDayLabel" type="text" value="ஞாயிற்றுக்கிழமை" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-3 py-2 focus:outline-none focus:border-amber-400" />
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="col-span-1">
+            <label for="inputNewIcon" class="block text-slate-300 font-medium mb-1">ஐகான் (Icon)</label>
+            <select id="inputNewIcon" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-2 py-2">
+              <option value="🗣️">🗣️ தமிழ்</option>
+              <option value="🔬">🔬 இயற்பியல்</option>
+              <option value="🧪">🧪 வேதியியல்</option>
+              <option value="🚌">🚌 சுற்றுலா</option>
+              <option value="📝">📝 தேர்வு</option>
+              <option value="🎓">🎓 கல்வி</option>
+              <option value="🏆">🏆 போட்டி</option>
+              <option value="📅">📅 கூட்டம்</option>
+            </select>
+          </div>
+          <div class="col-span-2">
+            <label for="inputNewTime" class="block text-slate-300 font-medium mb-1">நேரம் (Time)</label>
+            <input id="inputNewTime" type="text" value="காலை 9.30 மணி" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-3 py-2 focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+        <div>
+          <label for="inputNewTitle" class="block text-slate-300 font-medium mb-1">நிகழ்வின் பெயர் (Event Title in Tamil/English)</label>
+          <input id="inputNewTitle" type="text" placeholder="எ.கா: சிறப்பு ஆசிரியர் ஆலோசனைக் கூட்டம்" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-3 py-2 focus:outline-none focus:border-amber-400" />
+        </div>
+        <div>
+          <label for="inputNewVenue" class="block text-slate-300 font-medium mb-1">இடம் / கூடுதல் விவரம் (Venue / Notes)</label>
+          <input id="inputNewVenue" type="text" value="பட்டீஸ்வரம்" class="w-full rounded-xl bg-slate-800 border border-slate-700 text-white px-3 py-2 focus:outline-none focus:border-amber-400" />
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+        <button id="btnCancelAddDay" type="button" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold hover:bg-slate-700">
+          ரத்து (Cancel)
+        </button>
+        <button id="btnConfirmAddDay" type="button" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold">
+          ＋ போஸ்டரில் சேர் (Add to Poster)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: High-Res PNG Preview & Guaranteed Save Modal -->
+  <div id="modalPngPreview" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-amber-500/40 rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800">
+        <div>
+          <h3 class="text-sm sm:text-base font-bold text-amber-300 flex items-center gap-2">
+            <span>🖼️</span> <span>உயர்தர தமிழ் போஸ்டர் தயார்! (High-Res PNG Ready)</span>
+          </h3>
+          <p class="text-[11px] text-slate-400">
+            கீழே உள்ள படத்தின் மீது Right-Click → "Save image as..." (அல்லது மொபைலில் Long-Press) செய்து சேமிக்கலாம்.
+          </p>
+        </div>
+        <button id="btnClosePngModal" type="button" class="text-slate-400 hover:text-white text-xl font-bold px-2">×</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto flex-1 flex flex-col items-center bg-slate-950/60">
+        <img id="generatedPosterImg" alt="AGMHSS Tamil Schedule Poster" class="max-w-full h-auto rounded-xl border border-amber-500/40 shadow-lg" />
+      </div>
+
+      <div class="px-5 py-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 bg-slate-900">
+        <button id="btnDirectDownloadModal" type="button" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold transition">
+          ⬇️ மீண்டும் பதிவிறக்கு (Download .PNG)
+        </button>
+        <button id="btnClosePngModalBottom" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
+          மூடு (Close)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Google Apps Script Code.gs & GitHub Deployment Guide -->
+  <div id="modalAppsScript" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-indigo-500/50 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800">
+        <div>
+          <h3 class="text-sm sm:text-base font-bold text-amber-300 flex items-center gap-2">
+            <span>📜</span> <span>Incoming Circulars — Google Apps Script (`Code.gs`)</span>
+          </h3>
+          <p class="text-[11px] text-slate-400">
+            உங்கள் Drive Folder (<code class="text-amber-200">1L5K_ALKNcp3y92-QEmNTXDKNerV5YF2m</code>) மற்றும் Sheet (<code class="text-amber-200">1RRjKuAgfWpIRl1ghQijbgua7zCcN64-daqCztjyXVxU</code>) உடன் நேரடியாக இணைக்கப்பட்டுள்ளது.
+          </p>
+        </div>
+        <button id="btnCloseAppsScriptModal" type="button" class="text-slate-400 hover:text-white text-xl font-bold px-2">×</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto flex-1 space-y-3 bg-slate-950/70 text-xs">
+        <div class="bg-indigo-950/60 border border-indigo-500/30 rounded-xl p-3 text-slate-200 space-y-1">
+          <p class="font-bold text-amber-300">🚀 பயன்படுத்துவது எப்படி (Quick Setup):</p>
+          <ol class="list-decimal list-inside space-y-1 text-[11px] sm:text-xs text-slate-300">
+            <li>உங்கள் <strong>CircularDrop Drive Integration</strong> Apps Script திட்டத்தைத் திறந்து கீழே உள்ள குறியீட்டை ஒட்டவும் (Paste).</li>
+            <li>இடதுபுறம் உள்ள <strong>Services (＋)</strong> கிளிக் செய்து <strong>Drive API (v2 அல்லது v3)</strong> சேர்க்கவும் (PDF/Image OCR-க்காக).</li>
+            <li><strong>Deploy → New deployment → Web app</strong> (Execute as: <em>Me</em>, Who has access: <em>Anyone</em>) கொடுத்து வரும் <code>/exec</code> URL-ஐ இடதுபுறப் பெட்டியில் சேமிக்கவும்.</li>
+            <li>இந்த HTML கோப்பை <code>agmhss.github.io/poster.html</code> ஆகப் பதிவேற்றினால் போதும்!</li>
+          </ol>
+        </div>
+
+        <pre id="appsScriptCodeBlock" class="bg-slate-900 border border-slate-800 rounded-xl p-3.5 text-[11px] font-mono text-emerald-300 overflow-x-auto leading-relaxed select-all whitespace-pre"></pre>
+      </div>
+
+      <div class="px-5 py-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 bg-slate-900">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btnCopyAppsScriptCode" type="button" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold transition">
+            📋 Copy Code.gs
+          </button>
+          <button id="btnDownloadAppsScriptFile" type="button" class="px-3 py-2 rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white text-xs font-bold transition">
+            ⬇️ Download Code.gs
+          </button>
+          <button id="btnDownloadSelfHtml" type="button" class="px-3 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold transition">
+            🌐 Download HTML for GitHub Pages
+          </button>
+        </div>
+        <button id="btnCloseAppsScriptModalBottom" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
+          மூடு (Close)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Banner -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden bg-emerald-900/95 border border-emerald-400/50 text-emerald-100 px-4 py-2.5 rounded-xl shadow-2xl text-xs sm:text-sm font-medium flex items-center gap-2">
+    <span>✅</span>
+    <span id="toastMessage">வெற்றிகரமாகச் சேமிக்கப்பட்டது!</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'agmhss_vertical_tamil_poster_v4';
+    const DEFAULT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzEHfDkelY5TRX3vIjAbsVABZdBY6mWFZNQzO-rKdBgOk5KmWlxi3f8xADOiaHJN16X/exec';
+
+    const APPS_SCRIPT_CODE = `/**
+ * AGMHSS Patteeswaram — Incoming Circulars to Tamil Poster Bridge (Code.gs)
+ * Folder: Incoming Circulars (1L5K_ALKNcp3y92-QEmNTXDKNerV5YF2m)
+ * Sheet:  school scheduler   (1RRjKuAgfWpIRl1ghQijbgua7zCcN64-daqCztjyXVxU)
+ */
+
+const FOLDER_ID = '1L5K_ALKNcp3y92-QEmNTXDKNerV5YF2m';
+const SHEET_ID  = '1RRjKuAgfWpIRl1ghQijbgua7zCcN64-daqCztjyXVxU';
+const GROQ_API_KEY = ''; // விருப்பத்தேர்வு (Optional): gsk_... key for Qwen/Llama Tamil extraction
+
+const TAMIL_DAYS = [
+  'ஞாயிற்றுக்கிழமை', 'திங்கட்கிழமை', 'செவ்வாய்க்கிழமை',
+  'புதன்கிழமை', 'வியாழக்கிழமை', 'வெள்ளிக்கிழமை', 'சனிக்கிழமை'
+];
+
+/**
+ * 1. GET Endpoint for GitHub Pages Poster Studio (agmhss.github.io)
+ */
+function doGet(e) {
+  try {
+    if (e && e.parameter && e.parameter.scan === '1') {
+      scanIncomingCircularsFolder();
+    }
+    const days = readEventsFromSheetOrFolder();
+    const payload = {
+      status: 'ok',
+      school: 'அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்',
+      folderId: FOLDER_ID,
+      updatedAt: new Date().toISOString(),
+      days: days
+    };
+    return ContentService.createTextOutput(JSON.stringify(payload))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: 'error',
+      message: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * 2. Scans "Incoming Circulars" Drive Folder & Extracts New Circulars into Sheet
+ *    (Set a 15-minute or hourly Time-Driven Trigger on this function)
+ */
+function scanIncomingCircularsFolder() {
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const files = folder.getFiles();
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheets()[0];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['isoDate', 'dateDisplay', 'dayName', 'tag', 'icon', 'time', 'title', 'venue', 'fileId']);
+  }
+
+  const existingData = sheet.getDataRange().getValues();
+  const processedIds = new Set(existingData.slice(1).map(r => String(r[8] || '')));
+
+  while (files.hasNext()) {
+    const file = files.next();
+    const fileId = file.getId();
+    if (processedIds.has(fileId)) continue;
+
+    const rawText = extractTextFromDriveFile(file);
+    const parsedEvents = parseCircularTextToEvents(rawText, file.getName());
+
+    parsedEvents.forEach(ev => {
+      sheet.appendRow([
+        ev.isoDate,
+        ev.dateDisplay,
+        ev.dayName,
+        ev.tag || 'புதிய அறிவிப்பு',
+        ev.icon || '📌',
+        ev.time || 'காலை 9.30 மணி',
+        ev.title,
+        ev.venue || 'பட்டீஸ்வரம்',
+        fileId
+      ]);
+    });
+  }
+}
+
+/**
+ * 3. Extracts Text from PDF, Image (via Drive OCR), Google Doc, or Text File
+ */
+function extractTextFromDriveFile(file) {
+  const mime = file.getMimeType();
+  try {
+    if (mime === MimeType.GOOGLE_DOCS) {
+      return DocumentApp.openById(file.getId()).getBody().getText();
+    }
+    if (mime === MimeType.PLAIN_TEXT) {
+      return file.getBlob().getDataAsString('UTF-8');
+    }
+    // Use Drive API OCR for PDFs and Images (Enable Drive API in Services)
+    if (typeof Drive !== 'undefined' && Drive.Files) {
+      const resource = { title: 'temp_ocr_' + file.getName(), mimeType: MimeType.GOOGLE_DOCS };
+      const ocrFile = Drive.Files.copy(resource, file.getId(), { ocr: true, ocrLanguage: 'ta' });
+      const text = DocumentApp.openById(ocrFile.id).getBody().getText();
+      DriveApp.getFileById(ocrFile.id).setTrashed(true);
+      return text;
+    }
+  } catch (e) {
+    Logger.log('OCR fallback for ' + file.getName() + ': ' + e);
+  }
+  return file.getName();
+}
+
+/**
+ * 4. Parses Circular Text into Date-wise Tamil Events (Regex + Optional Groq Qwen AI)
+ */
+function parseCircularTextToEvents(text, fallbackTitle) {
+  const results = [];
+  const dateRegex = /(\\d{1,2})[.\\/-](\\d{1,2})[.\\/-](20\\d{2})/g;
+  const lines = String(text || '').split(/\\r?\\n/).map(l => l.trim()).filter(Boolean);
+
+  lines.forEach(line => {
+    const m = dateRegex.exec(line);
+    dateRegex.lastIndex = 0;
+    if (m) {
+      const dd = m[1].padStart(2, '0');
+      const mm = m[2].padStart(2, '0');
+      const yyyy = m[3];
+      const isoDate = yyyy + '-' + mm + '-' + dd;
+      const dt = new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+      const dayName = TAMIL_DAYS[dt.getDay()] || 'திங்கட்கிழமை';
+
+      const timeMatch = line.match(/(காலை|மாலை|மதியம்)?\\s*\\d{1,2}([.:]\\d{2})?\\s*மணி/);
+      const time = timeMatch ? timeMatch[0].trim() : 'காலை 9.30 மணி';
+      const parts = line.split('|');
+      const venue = parts.length > 1 ? parts[parts.length - 1].trim() : 'பட்டீஸ்வரம்';
+      const cleanTitle = parts[0]
+        .replace(m[0], '')
+        .replace(time, '')
+        .replace(/^[-–•:\\s]+/, '')
+        .trim() || fallbackTitle;
+
+      results.push({
+        isoDate: isoDate,
+        dateDisplay: dd + '.' + mm + '.' + yyyy,
+        dayName: dayName,
+        tag: 'சுற்றறிக்கை',
+        icon: pickContextIcon(cleanTitle),
+        time: time,
+        title: cleanTitle,
+        venue: venue
+      });
+    }
+  });
+
+  if (results.length === 0) {
+    const now = new Date();
+    const dd = String(now.getDate()).padStart(2, '0');
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const yyyy = now.getFullYear();
+    results.push({
+      isoDate: yyyy + '-' + mm + '-' + dd,
+      dateDisplay: dd + '.' + mm + '.' + yyyy,
+      dayName: TAMIL_DAYS[now.getDay()],
+      tag: 'புதிய சுற்றறிக்கை',
+      icon: pickContextIcon(fallbackTitle),
+      time: 'காலை 9.30 மணி',
+      title: fallbackTitle.replace(/\\.[^.]+$/, ''),
+      venue: 'AGMHSS பட்டீஸ்வரம்'
+    });
+  }
+  return results;
+}
+
+function pickContextIcon(str) {
+  const s = String(str || '').toLowerCase();
+  if (s.includes('தமிழ்') || s.includes('பேச்சு') || s.includes('tamil')) return '🗣️';
+  if (s.includes('physics') || s.includes('இயற்பியல்')) return '🔬';
+  if (s.includes('chemistry') || s.includes('வேதியியல்')) return '🧪';
+  if (s.includes('visit') || s.includes('சுற்றுலா')) return '🚌';
+  if (s.includes('exam') || s.includes('தேர்வு')) return '📝';
+  return '📌';
+}
+
+/**
+ * 5. Reads Grouped Days from Sheet for the Poster Web App
+ */
+function readEventsFromSheetOrFolder() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheets()[0];
+  if (sheet.getLastRow() <= 1) {
+    scanIncomingCircularsFolder();
+  }
+  const rows = sheet.getDataRange().getValues().slice(1);
+  const byDate = {};
+
+  rows.forEach((r, idx) => {
+    const isoDate = String(r[0] || '').trim();
+    if (!isoDate) return;
+    if (!byDate[isoDate]) {
+      byDate[isoDate] = {
+        id: 'day-' + isoDate,
+        isoDate: isoDate,
+        dateDisplay: String(r[1] || isoDate),
+        dayName: String(r[2] || ''),
+        tag: String(r[3] || ''),
+        events: []
+      };
+    }
+    byDate[isoDate].events.push({
+      id: 'ev-' + idx,
+      icon: String(r[4] || '📌'),
+      time: String(r[5] || 'காலை 9.30 மணி'),
+      title: String(r[6] || ''),
+      venue: String(r[7] || 'பட்டீஸ்வரம்')
+    });
+  });
+
+  return Object.keys(byDate).sort().map(k => byDate[k]);
+}`;
+
+    const TAMIL_WEEKDAYS = [
+      'ஞாயிற்றுக்கிழமை',
+      'திங்கட்கிழமை',
+      'செவ்வாய்க்கிழமை',
+      'புதன்கிழமை',
+      'வியாழக்கிழமை',
+      'வெள்ளிக்கிழமை',
+      'சனிக்கிழமை'
+    ];
+
+    const THEMES = {
+      purple: {
+        start: '#2e1065',
+        mid: '#3b0764',
+        end: '#1e1b4b',
+        gold: '#f59e0b'
+      },
+      maroon: {
+        start: '#450a0a',
+        mid: '#7f1d1d',
+        end: '#270909',
+        gold: '#fbbf24'
+      },
+      emerald: {
+        start: '#064e3b',
+        mid: '#065f46',
+        end: '#022c22',
+        gold: '#fcd34d'
+      },
+      sapphire: {
+        start: '#172554',
+        mid: '#1e3a8a',
+        end: '#0f172a',
+        gold: '#f59e0b'
+      }
+    };
+
+    function getDefaultState() {
+      return {
+        theme: 'purple',
+        filterMode: 'upcoming',
+        cleanMode: false,
+        appsScriptUrl: DEFAULT_WEB_APP_URL,
+        autoSyncDrive: false,
+        schoolBadge: 'பள்ளிக் கல்வித் துறை — தஞ்சாவூர் மாவட்டம்',
+        schoolName: 'அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்',
+        mainTitle: 'வரவிருக்கும் நிகழ்வுகள்',
+        subtitleUpcoming: '13.11.2026 முதல் 20.11.2026 வரை',
+        subtitleAll: '10.11.2026 முதல் 20.11.2026 வரை',
+        footerLine1: '',
+        footerLine2: 'AGMHSS பட்டீஸ்வரம்',
+        days: [
+          {
+            id: 'day-2026-11-10',
+            isoDate: '2026-11-10',
+            dateDisplay: '10.11.2026',
+            dayName: 'செவ்வாய்க்கிழமை',
+            tag: 'முந்தைய நிகழ்வு',
+            events: [
+              {
+                id: 'ev-10-1',
+                icon: '🚌',
+                time: 'மாலை 6.00 மணி',
+                title: 'கல்விச் சுற்றுலா முன்னேற்பாடுகள் (Exposure Visit Prep)',
+                venue: 'பட்டீஸ்வரம்'
+              }
+            ]
+          },
+          {
+            id: 'day-2026-11-11',
+            isoDate: '2026-11-11',
+            dateDisplay: '11.11.2026',
+            dayName: 'புதன்கிழமை',
+            tag: 'முந்தைய நிகழ்வு',
+            events: [
+              {
+                id: 'ev-11-1',
+                icon: '🔬',
+                time: 'காலை 7.00 மணி',
+                title: 'AI இயற்பியல் பயிற்சி (AI Training Physics - Day 1)',
+                venue: 'சாஸ்த்ரா பல்கலைக்கழகம், வல்லம்'
+              },
+              {
+                id: 'ev-11-2',
+                icon: '🚌',
+                time: 'காலை 8.00 மணி',
+                title: 'கல்விச் சுற்றுலா - நாள் 1 (Exposure Visit Day 1 — 56 மாணவர்கள்)',
+                venue: 'கும்பகோணம்'
+              },
+              {
+                id: 'ev-11-3',
+                icon: '🗣️',
+                time: 'காலை 9.30 மணி',
+                title: 'தமிழ் பேச்சு எங்கள் உயிர் மூச்சு — நடுநிலைப்பள்ளித் தமிழாசிரியர்கள் பயிற்சி',
+                venue: 'புனித அந்தோணியார் மேல்நிலைப்பள்ளி, தஞ்சாவூர்'
+              }
+            ]
+          },
+          {
+            id: 'day-2026-11-12',
+            isoDate: '2026-11-12',
+            dateDisplay: '12.11.2026',
+            dayName: 'வியாழக்கிழமை',
+            tag: 'முந்தைய நிகழ்வு',
+            events: [
+              {
+                id: 'ev-12-1',
+                icon: '🔬',
+                time: 'காலை 7.00 மணி',
+                title: 'AI இயற்பியல் பயிற்சி - நாள் 2 (AI Training Physics Day 2)',
+                venue: 'சாஸ்த்ரா பல்கலைக்கழகம், வல்லம்'
+              },
+              {
+                id: 'ev-12-2',
+                icon: '🚌',
+                time: 'காலை 8.00 மணி',
+                title: 'கல்விச் சுற்றுலா - நாள் 2 (Exposure Visit Day 2)',
+                venue: 'கும்பகோணம்'
+              },
+              {
+                id: 'ev-12-3',
+                icon: '🗣️',
+                time: 'காலை 9.30 மணி',
+                title: 'பட்டதாரி தமிழ் ஆசிரியர்கள் கூட்டம் (தமிழ் பேச்சு எங்கள் உயிர் மூச்சு)',
+                venue: 'புனித அந்தோணியார் மேல்நிலைப்பள்ளி, தஞ்சாவூர்'
+              }
+            ]
+          },
+          {
+            id: 'day-2026-11-13',
+            isoDate: '2026-11-13',
+            dateDisplay: '13.11.2026',
+            dayName: 'வெள்ளிக்கிழமை',
+            tag: 'நாளை (Tomorrow)',
+            events: [
+              {
+                id: 'ev-13-1',
+                icon: '🗣️',
+                time: 'காலை 9.30 மணி',
+                title: 'தமிழ் பேச்சு எங்கள் உயிர் மூச்சு — மேல்நிலை முதுகலை தமிழ் ஆசிரியர்கள் பயிற்சி\nCake Distribution',
+                venue: 'புனித அந்தோணியார் மேல்நிலைப்பள்ளி, தஞ்சாவூர்'
+              }
+            ]
+          },
+          {
+            id: 'day-2026-11-14',
+            isoDate: '2026-11-14',
+            dateDisplay: '14.11.2026',
+            dayName: 'சனிக்கிழமை',
+            tag: 'சிறப்பு நிகழ்வு',
+            events: [
+              {
+                id: 'ev-14-1',
+                icon: '🧪',
+                time: 'காலை 9.00 மணி',
+                title: 'AI வேதியியல் பயிற்சி - நாள் 2 (AI Chemistry Day 2) & குழந்தைகள் தின விழா',
+                venue: 'பட்டீஸ்வரம் / சாஸ்த்ரா வல்லம்'
+              }
+            ]
+          },
+          {
+            id: 'day-2026-11-16',
+            isoDate: '2026-11-16',
+            dateDisplay: '16.11.2026 – 20.11.2026',
+            dayName: 'திங்கள் முதல் வெள்ளி வரை',
+            tag: 'தேர்வு வாரம்',
+            events: [
+              {
+                id: 'ev-16-1',
+                icon: '📝',
+                time: 'காலை 9.30 மணி',
+                title: 'தஞ்சாவூர் மாவட்டம் — இரண்டாம் இடைப்பருவத் தேர்வுகள் (Second Mid Term Exams | Nov 16–20)',
+                venue: 'அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்'
+              },
+              {
+                id: 'ev-16-2',
+                icon: '🎓',
+                time: 'நவம்பர் 17',
+                title: 'இரண்டாம் இடைப்பருவத் தேர்வுத் தொடர்ச்சி',
+                venue: 'AGMHSS பட்டீஸ்வரம்'
+              }
+            ]
+          }
+        ]
+      };
+    }
+
+    let posterState = loadState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.days) && parsed.days.length > 0) {
+            if (!parsed.appsScriptUrl) parsed.appsScriptUrl = DEFAULT_WEB_APP_URL;
+            return parsed;
+          }
+        }
+      } catch (e) {
+        // Fallback to default state
+      }
+      return getDefaultState();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(posterState));
+      } catch (e) {
+        // Ignore storage errors in sandboxed mode
+      }
+    }
+
+    function showToast(msg) {
+      const banner = document.getElementById('toastBanner');
+      const textEl = document.getElementById('toastMessage');
+      if (!banner || !textEl) return;
+      textEl.textContent = msg;
+      banner.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 2800);
+    }
+
+    function applyTheme(themeKey) {
+      const t = THEMES[themeKey] || THEMES.purple;
+      const root = document.documentElement;
+      root.style.setProperty('--poster-bg-start', t.start);
+      root.style.setProperty('--poster-bg-mid', t.mid);
+      root.style.setProperty('--poster-bg-end', t.end);
+      root.style.setProperty('--poster-gold', t.gold);
+    }
+
+    function getVisibleDays() {
+      if (posterState.filterMode === 'all') {
+        return posterState.days;
+      }
+      return posterState.days.filter(d => d.isoDate >= '2026-11-13');
+    }
+
+    async function syncFromGoogleDrive(silent = false) {
+      const urlInput = document.getElementById('inputAppsScriptUrl');
+      const statusText = document.getElementById('syncLastStatusText');
+      const statusPill = document.getElementById('syncStatusPill');
+      const endpoint = (urlInput && urlInput.value.trim()) || posterState.appsScriptUrl || DEFAULT_WEB_APP_URL;
+
+      posterState.appsScriptUrl = endpoint;
+      saveState();
+
+      if (statusText) statusText.textContent = '⏳ Google Drive (Incoming Circulars) உடன் இணைக்கிறது...';
+      if (statusPill) statusPill.textContent = 'Syncing...';
+
+      try {
+        const res = await fetch(endpoint, { method: 'GET', redirect: 'follow' });
+        const text = await res.text();
+        let data = null;
+        try {
+          data = JSON.parse(text);
+        } catch (jsonErr) {
+          // Support CSV if a Google Sheets published CSV link was pasted
+          data = parseCsvToDays(text);
+        }
+
+        const incomingDays = Array.isArray(data) ? data : (data && Array.isArray(data.days) ? data.days : []);
+        if (incomingDays.length > 0) {
+          // Merge by isoDate so user edits aren't lost unless updated
+          const byDate = {};
+          posterState.days.forEach(d => { byDate[d.isoDate] = d; });
+          incomingDays.forEach(d => {
+            if (d && d.isoDate && Array.isArray(d.events) && d.events.length > 0) {
+              byDate[d.isoDate] = d;
+            }
+          });
+          posterState.days = Object.keys(byDate).sort().map(k => byDate[k]);
+          saveState();
+          renderPoster();
+          const nowStr = new Date().toLocaleTimeString('ta-IN', { hour: '2-digit', minute: '2-digit' });
+          if (statusText) statusText.textContent = `✅ ஒத்திசைக்கப்பட்டது (${incomingDays.length} நாட்கள் • ${nowStr})`;
+          if (statusPill) statusPill.textContent = 'Drive Synced ✓';
+          if (!silent) showToast(`Incoming Circulars-ல் இருந்து ${incomingDays.length} நாட்கள் புதுப்பிக்கப்பட்டன!`);
+        } else {
+          if (statusText) statusText.textContent = 'ℹ️ புதிய சுற்றறிக்கைகள் எதுவும் இல்லை (தற்போதைய பட்டியல் செயலில் உள்ளது).';
+          if (statusPill) statusPill.textContent = 'Up to Date';
+          if (!silent) showToast('Drive இணைப்பு சரிபார்க்கப்பட்டது — புதிய மாற்றங்கள் இல்லை.');
+        }
+      } catch (err) {
+        if (statusText) {
+          statusText.innerHTML = 'ℹ️ Apps Script <code>doGet()</code> இன்னும் Deploy செய்யப்படவில்லை அல்லது உள்ளூர் நினைவகம் (Local) செயலில் உள்ளது.';
+        }
+        if (statusPill) statusPill.textContent = 'Local + Ready';
+        if (!silent) {
+          showToast('Apps Script Code.gs-ஐ Deploy செய்ததும் நேரடி ஒத்திசைவு செயல்படும்!');
+        }
+      }
+    }
+
+    function parseCsvToDays(csvText) {
+      const lines = String(csvText || '').split(/\r?\n/).filter(Boolean);
+      if (lines.length <= 1) return [];
+      const byDate = {};
+      lines.slice(1).forEach((line, idx) => {
+        const cols = line.split(',').map(c => c.replace(/^"|"$/g, '').trim());
+        const isoDate = cols[0];
+        if (!isoDate || !/^\d{4}-\d{2}-\d{2}/.test(isoDate)) return;
+        if (!byDate[isoDate]) {
+          byDate[isoDate] = {
+            id: 'day-' + isoDate,
+            isoDate,
+            dateDisplay: cols[1] || isoDate,
+            dayName: cols[2] || '',
+            tag: cols[3] || '',
+            events: []
+          };
+        }
+        byDate[isoDate].events.push({
+          id: 'ev-csv-' + idx,
+          icon: cols[4] || '📌',
+          time: cols[5] || 'காலை 9.30 மணி',
+          title: cols[6] || '',
+          venue: cols[7] || 'பட்டீஸ்வரம்'
+        });
+      });
+      return Object.keys(byDate).sort().map(k => byDate[k]);
+    }
+
+    function renderPoster() {
+      applyTheme(posterState.theme);
+
+      const selectTheme = document.getElementById('selectTheme');
+      if (selectTheme) selectTheme.value = posterState.theme;
+
+      const urlInput = document.getElementById('inputAppsScriptUrl');
+      if (urlInput && document.activeElement !== urlInput) {
+        urlInput.value = posterState.appsScriptUrl || DEFAULT_WEB_APP_URL;
+      }
+
+      const chkAuto = document.getElementById('chkAutoSyncDrive');
+      if (chkAuto) chkAuto.checked = Boolean(posterState.autoSyncDrive);
+
+      const btnUpcoming = document.getElementById('btnFilterUpcoming');
+      const btnAll = document.getElementById('btnFilterAll');
+      if (btnUpcoming && btnAll) {
+        if (posterState.filterMode === 'upcoming') {
+          btnUpcoming.className = 'px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-amber-500/20 border-amber-400 text-amber-200';
+          btnAll.className = 'px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600';
+        } else {
+          btnAll.className = 'px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-amber-500/20 border-amber-400 text-amber-200';
+          btnUpcoming.className = 'px-3 py-2 rounded-xl text-xs font-bold border transition text-center bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600';
+        }
+      }
+
+      const posterWrapper = document.getElementById('posterWrapper');
+      if (posterWrapper) {
+        if (posterState.cleanMode) {
+          posterWrapper.classList.add('hide-in-clean');
+        } else {
+          posterWrapper.classList.remove('hide-in-clean');
+        }
+      }
+
+      document.getElementById('posterSchoolBadge').innerText = posterState.schoolBadge;
+      document.getElementById('posterSchoolName').innerText = posterState.schoolName;
+      document.getElementById('posterMainTitle').innerText = posterState.mainTitle;
+      document.getElementById('posterSubtitle').innerText =
+        posterState.filterMode === 'upcoming' ? posterState.subtitleUpcoming : posterState.subtitleAll;
+      document.getElementById('posterFooterLine1').innerText = posterState.footerLine1 || '';
+      document.getElementById('posterFooterLine2').innerText = posterState.footerLine2 || '';
+
+      const visibleDays = getVisibleDays();
+      const statBadge = document.getElementById('statBadgeCount');
+      if (statBadge) {
+        const totalEvents = visibleDays.reduce((acc, d) => acc + d.events.length, 0);
+        statBadge.textContent = `${visibleDays.length} நாட்கள் • ${totalEvents} நிகழ்வுகள்`;
+      }
+
+      const container = document.getElementById('dayCardsContainer');
+      container.innerHTML = '';
+
+      visibleDays.forEach((dayObj) => {
+        const card = document.createElement('div');
+        card.className = 'parchment-card rounded-2xl p-3 sm:p-3.5 transition-all';
+
+        // Day Header Row
+        const headerRow = document.createElement('div');
+        headerRow.className = 'flex flex-wrap items-center justify-between gap-1.5 pb-2 mb-2 border-b border-amber-600/30 min-w-0';
+
+        const leftDateGroup = document.createElement('div');
+        leftDateGroup.className = 'flex flex-wrap items-center gap-1.5 min-w-0 flex-1';
+
+        const datePill = document.createElement('span');
+        datePill.className = 'px-2.5 py-0.5 rounded-lg bg-purple-950 text-amber-300 font-extrabold text-xs sm:text-sm tracking-wide shadow-sm break-words';
+        datePill.contentEditable = 'true';
+        datePill.innerText = dayObj.dateDisplay;
+        datePill.addEventListener('blur', () => {
+          dayObj.dateDisplay = datePill.innerText.trim();
+          saveState();
+        });
+
+        const dayNameSpan = document.createElement('span');
+        dayNameSpan.className = 'text-xs sm:text-sm font-extrabold text-purple-950 break-words';
+        dayNameSpan.contentEditable = 'true';
+        dayNameSpan.innerText = dayObj.dayName;
+        dayNameSpan.addEventListener('blur', () => {
+          dayObj.dayName = dayNameSpan.innerText.trim();
+          saveState();
+        });
+
+        leftDateGroup.appendChild(datePill);
+        leftDateGroup.appendChild(dayNameSpan);
+
+        if (dayObj.tag) {
+          const tagBadge = document.createElement('span');
+          tagBadge.className = 'text-[11px] px-2 py-0.5 rounded-full bg-amber-500/25 text-amber-950 font-bold border border-amber-600/40 break-words';
+          tagBadge.contentEditable = 'true';
+          tagBadge.innerText = dayObj.tag;
+          tagBadge.addEventListener('blur', () => {
+            dayObj.tag = tagBadge.innerText.trim();
+            saveState();
+          });
+          leftDateGroup.appendChild(tagBadge);
+        }
+
+        // Right Controls for Day Card
+        const rightControls = document.createElement('div');
+        rightControls.className = 'edit-ui-control flex items-center gap-1 shrink-0';
+
+        const btnAddEv = document.createElement('button');
+        btnAddEv.type = 'button';
+        btnAddEv.title = 'இந்நாளில் புதிய நிகழ்வு சேர்';
+        btnAddEv.className = 'px-2 py-0.5 rounded bg-purple-900 hover:bg-purple-800 text-amber-200 text-[11px] font-bold transition';
+        btnAddEv.textContent = '+ நிகழ்வு';
+        btnAddEv.addEventListener('click', () => {
+          dayObj.events.push({
+            id: 'ev-' + Date.now(),
+            icon: '📌',
+            time: 'காலை 10.00 மணி',
+            title: 'புதிய பள்ளி நிகழ்வு (நேராகக் கிளிக் செய்து திருத்தவும்)',
+            venue: 'பட்டீஸ்வரம்'
+          });
+          saveState();
+          renderPoster();
+          showToast('புதிய நிகழ்வு சேர்க்கப்பட்டது!');
+        });
+
+        const btnDelDay = document.createElement('button');
+        btnDelDay.type = 'button';
+        btnDelDay.title = 'இந்த நாள் அட்டையை நீக்கு';
+        btnDelDay.className = 'px-1.5 py-0.5 rounded bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-bold transition';
+        btnDelDay.textContent = '×';
+        btnDelDay.addEventListener('click', () => {
+          posterState.days = posterState.days.filter(d => d.id !== dayObj.id);
+          saveState();
+          renderPoster();
+          showToast('நாள் அட்டை நீக்கப்பட்டது.');
+        });
+
+        rightControls.appendChild(btnAddEv);
+        rightControls.appendChild(btnDelDay);
+
+        headerRow.appendChild(leftDateGroup);
+        headerRow.appendChild(rightControls);
+        card.appendChild(headerRow);
+
+        // Events List inside Day Card
+        const eventsList = document.createElement('div');
+        eventsList.className = 'space-y-2';
+
+        dayObj.events.forEach((evObj) => {
+          const evRow = document.createElement('div');
+          evRow.className = 'flex items-start justify-between gap-2 bg-white/80 rounded-xl p-2.5 border border-amber-500/40 shadow-sm min-w-0';
+
+          const evLeft = document.createElement('div');
+          evLeft.className = 'flex items-start gap-2 flex-1 min-w-0';
+
+          const iconSpan = document.createElement('span');
+          iconSpan.className = 'text-base sm:text-lg leading-none pt-0.5 select-none shrink-0';
+          iconSpan.contentEditable = 'true';
+          iconSpan.innerText = evObj.icon || '📌';
+          iconSpan.addEventListener('blur', () => {
+            evObj.icon = iconSpan.innerText.trim() || '📌';
+            saveState();
+          });
+
+          const textCol = document.createElement('div');
+          textCol.className = 'flex-1 min-w-0 space-y-1';
+
+          const topLine = document.createElement('div');
+          topLine.className = 'flex flex-wrap items-center gap-1.5 min-w-0';
+
+          const timeBadge = document.createElement('span');
+          timeBadge.className = 'text-[11px] font-extrabold text-purple-900 bg-purple-100 px-2 py-0.5 rounded-md border border-purple-300 break-words max-w-full';
+          timeBadge.contentEditable = 'true';
+          timeBadge.innerText = evObj.time;
+          timeBadge.addEventListener('blur', () => {
+            evObj.time = timeBadge.innerText.trim();
+            saveState();
+          });
+
+          const venueBadge = document.createElement('span');
+          venueBadge.className = 'text-[11px] font-bold text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded-md border border-amber-300 break-words max-w-full leading-snug';
+          venueBadge.contentEditable = 'true';
+          venueBadge.innerText = '📍 ' + evObj.venue.replace(/^📍\s*/, '');
+          venueBadge.addEventListener('blur', () => {
+            evObj.venue = venueBadge.innerText.replace(/^📍\s*/, '').trim();
+            saveState();
+          });
+
+          topLine.appendChild(timeBadge);
+          topLine.appendChild(venueBadge);
+
+          const titleP = document.createElement('p');
+          titleP.className = 'text-xs sm:text-[13px] font-bold text-slate-900 leading-snug pt-0.5 break-words whitespace-pre-line pr-1';
+          titleP.contentEditable = 'true';
+          titleP.innerText = evObj.title;
+          titleP.addEventListener('blur', () => {
+            evObj.title = titleP.innerText.trim();
+            saveState();
+          });
+
+          textCol.appendChild(topLine);
+          textCol.appendChild(titleP);
+
+          evLeft.appendChild(iconSpan);
+          evLeft.appendChild(textCol);
+
+          const btnDelEv = document.createElement('button');
+          btnDelEv.type = 'button';
+          btnDelEv.title = 'நிகழ்வை நீக்கு';
+          btnDelEv.className = 'edit-ui-control text-slate-400 hover:text-rose-700 text-xs font-bold px-1 py-0.5 rounded shrink-0';
+          btnDelEv.textContent = '×';
+          btnDelEv.addEventListener('click', () => {
+            dayObj.events = dayObj.events.filter(e => e.id !== evObj.id);
+            saveState();
+            renderPoster();
+          });
+
+          evRow.appendChild(evLeft);
+          evRow.appendChild(btnDelEv);
+          eventsList.appendChild(evRow);
+        });
+
+        card.appendChild(eventsList);
+        container.appendChild(card);
+      });
+    }
+
+    // Multi-line & strict-margin text wrapper for High-Res HTML5 Canvas Poster Renderer
+    function wrapCanvasText(ctx, text, maxWidth) {
+      const rawParagraphs = String(text || '').split(/\r?\n/);
+      const lines = [];
+
+      rawParagraphs.forEach((para) => {
+        const trimmed = para.trim();
+        if (!trimmed) return;
+        const words = trimmed.split(/\s+/);
+        let currentLine = '';
+
+        words.forEach((word) => {
+          if (ctx.measureText(word).width > maxWidth) {
+            if (currentLine) {
+              lines.push(currentLine);
+              currentLine = '';
+            }
+            let chunk = '';
+            for (const ch of word) {
+              if (ctx.measureText(chunk + ch).width > maxWidth && chunk.length > 0) {
+                lines.push(chunk);
+                chunk = ch;
+              } else {
+                chunk += ch;
+              }
+            }
+            currentLine = chunk;
+            return;
+          }
+
+          const candidate = currentLine ? currentLine + ' ' + word : word;
+          if (ctx.measureText(candidate).width <= maxWidth) {
+            currentLine = candidate;
+          } else {
+            if (currentLine) lines.push(currentLine);
+            currentLine = word;
+          }
+        });
+
+        if (currentLine) lines.push(currentLine);
+      });
+
+      return lines.length > 0 ? lines : [''];
+    }
+
+    function drawRoundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function generateHighResPosterPng() {
+      const visibleDays = getVisibleDays();
+      const t = THEMES[posterState.theme] || THEMES.purple;
+
+      const width = 1080;
+      const cardX = 72;
+      const cardW = width - 144; // 936px
+      const evX = cardX + 24;    // 96px
+      const evW = cardW - 48;    // 888px
+      const textOffsetX = 68;    // Icon gutter inside event box
+      const safeEvTextWidth = evW - textOffsetX - 96; // 724px conservative wrap so Tamil ligatures never near right border
+      const safeHeaderWidth = width - 240; // 840px conservative header wrap
+
+      const fontStack = "'Noto Sans Tamil', 'Mukta Malar', 'Inter', sans-serif";
+
+      // Measure dynamic height first
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+
+      tempCtx.font = `600 21px ${fontStack}`;
+      const badgeLines = wrapCanvasText(tempCtx, '❈ ❁ ❈   ' + posterState.schoolBadge + '   ❈ ❁ ❈', safeHeaderWidth);
+
+      tempCtx.font = `800 31px ${fontStack}`;
+      const schoolLines = wrapCanvasText(tempCtx, posterState.schoolName, safeHeaderWidth);
+
+      tempCtx.font = `900 36px ${fontStack}`;
+      const mainTitleLines = wrapCanvasText(tempCtx, posterState.mainTitle, safeHeaderWidth);
+
+      let totalHeight = 120 + badgeLines.length * 32 + schoolLines.length * 42 + mainTitleLines.length * 48 + 90;
+      const cardLayouts = [];
+
+      visibleDays.forEach((day) => {
+        tempCtx.font = `800 23px ${fontStack}`;
+        const datePillW = tempCtx.measureText(day.dateDisplay).width + 36;
+        tempCtx.font = `800 24px ${fontStack}`;
+        const dayNameW = tempCtx.measureText(day.dayName).width;
+        tempCtx.font = `700 19px ${fontStack}`;
+        const tagW = day.tag ? tempCtx.measureText('★ ' + day.tag).width + 24 : 0;
+
+        const wrapDayHeader = (datePillW + dayNameW + tagW + 76) > cardW;
+        let cardH = wrapDayHeader ? 118 : 82;
+
+        const evLayouts = [];
+        day.events.forEach((ev) => {
+          const metaStr = `${ev.time}  •  📍 ${ev.venue.replace(/^📍\s*/, '')}`;
+          tempCtx.font = `700 20px ${fontStack}`;
+          const metaLines = wrapCanvasText(tempCtx, metaStr, safeEvTextWidth);
+
+          tempCtx.font = `700 24px ${fontStack}`;
+          const titleLines = wrapCanvasText(tempCtx, ev.title, safeEvTextWidth);
+
+          const evBoxH = 26 + metaLines.length * 30 + 8 + titleLines.length * 34 + 18;
+          cardH += evBoxH + 16;
+          evLayouts.push({ ev, metaLines, titleLines, evBoxH });
+        });
+        cardH += 14;
+        cardLayouts.push({ day, cardH, wrapDayHeader, evLayouts });
+        totalHeight += cardH + 24;
+      });
+
+      const footer1Lines = posterState.footerLine1
+        ? (() => { tempCtx.font = `700 22px ${fontStack}`; return wrapCanvasText(tempCtx, posterState.footerLine1, safeHeaderWidth); })()
+        : [];
+      const footer2Lines = posterState.footerLine2
+        ? (() => { tempCtx.font = `500 19px ${fontStack}`; return wrapCanvasText(tempCtx, posterState.footerLine2, safeHeaderWidth); })()
+        : [];
+
+      totalHeight += (footer1Lines.length * 30) + (footer2Lines.length * 28) + 80;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = Math.max(totalHeight, 1180);
+      const ctx = canvas.getContext('2d');
+
+      // 1. Royal Gradient Background
+      const bgGrad = ctx.createLinearGradient(0, 0, width, canvas.height);
+      bgGrad.addColorStop(0, t.start);
+      bgGrad.addColorStop(0.5, t.mid);
+      bgGrad.addColorStop(1, t.end);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, canvas.height);
+
+      // 2. Outer Gold Border & Dashed Inner Frame
+      ctx.strokeStyle = t.gold;
+      ctx.lineWidth = 8;
+      drawRoundedRect(ctx, 24, 24, width - 48, canvas.height - 48, 36);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(253, 230, 138, 0.45)';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([12, 8]);
+      drawRoundedRect(ctx, 44, 44, width - 88, canvas.height - 88, 28);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // 3. Top Ornaments & Header
+      let cursorY = 88;
+      ctx.fillStyle = '#fde68a';
+      ctx.font = `600 21px ${fontStack}`;
+      ctx.textAlign = 'center';
+      badgeLines.forEach((line) => {
+        ctx.fillText(line, width / 2, cursorY, safeHeaderWidth);
+        cursorY += 32;
+      });
+
+      cursorY += 10;
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = `800 31px ${fontStack}`;
+      schoolLines.forEach((line) => {
+        ctx.fillText(line, width / 2, cursorY, safeHeaderWidth);
+        cursorY += 42;
+      });
+
+      cursorY += 4;
+      ctx.fillStyle = '#ffffff';
+      ctx.font = `900 36px ${fontStack}`;
+      mainTitleLines.forEach((line) => {
+        ctx.fillText(line, width / 2, cursorY, safeHeaderWidth);
+        cursorY += 46;
+      });
+
+      // Gold Subtitle Pill
+      const subText = posterState.filterMode === 'upcoming' ? posterState.subtitleUpcoming : posterState.subtitleAll;
+      ctx.font = `800 23px ${fontStack}`;
+      const subW = Math.min(safeHeaderWidth, ctx.measureText(subText).width + 64);
+      ctx.fillStyle = '#fbbf24';
+      drawRoundedRect(ctx, (width - subW) / 2, cursorY - 14, subW, 46, 23);
+      ctx.fill();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(subText, width / 2, cursorY + 17, subW - 28);
+      cursorY += 58;
+
+      // Divider
+      ctx.strokeStyle = 'rgba(251, 191, 36, 0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(72, cursorY);
+      ctx.lineTo(width - 72, cursorY);
+      ctx.stroke();
+      cursorY += 24;
+
+      // 4. Stacked Day Cards
+      cardLayouts.forEach(({ day, cardH, wrapDayHeader, evLayouts }) => {
+        const cardGrad = ctx.createLinearGradient(0, cursorY, 0, cursorY + cardH);
+        cardGrad.addColorStop(0, '#fffdf5');
+        cardGrad.addColorStop(1, '#fef3c7');
+        ctx.fillStyle = cardGrad;
+        drawRoundedRect(ctx, cardX, cursorY, cardW, cardH, 24);
+        ctx.fill();
+
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 4;
+        drawRoundedRect(ctx, cardX, cursorY, cardW, cardH, 24);
+        ctx.stroke();
+
+        ctx.font = `800 23px ${fontStack}`;
+        ctx.textAlign = 'left';
+        const dateText = day.dateDisplay;
+        const datePillW = Math.min(cardW - 48, ctx.measureText(dateText).width + 36);
+        ctx.fillStyle = '#2e1065';
+        drawRoundedRect(ctx, cardX + 24, cursorY + 16, datePillW, 42, 12);
+        ctx.fill();
+
+        ctx.fillStyle = '#fde68a';
+        ctx.fillText(dateText, cardX + 42, cursorY + 45, datePillW - 24);
+
+        if (!wrapDayHeader) {
+          ctx.fillStyle = '#1e1b4b';
+          ctx.font = `800 24px ${fontStack}`;
+          const maxDayNameW = cardW - datePillW - (day.tag ? 220 : 60);
+          ctx.fillText(day.dayName, cardX + 24 + datePillW + 16, cursorY + 45, Math.max(120, maxDayNameW));
+
+          if (day.tag) {
+            ctx.textAlign = 'right';
+            ctx.font = `700 19px ${fontStack}`;
+            ctx.fillStyle = '#92400e';
+            ctx.fillText('★ ' + day.tag, cardX + cardW - 24, cursorY + 44, 200);
+          }
+        } else {
+          if (day.tag) {
+            ctx.textAlign = 'right';
+            ctx.font = `700 19px ${fontStack}`;
+            ctx.fillStyle = '#92400e';
+            ctx.fillText('★ ' + day.tag, cardX + cardW - 24, cursorY + 44, cardW - datePillW - 56);
+          }
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#1e1b4b';
+          ctx.font = `800 22px ${fontStack}`;
+          ctx.fillText(day.dayName, cardX + 28, cursorY + 88, cardW - 56);
+        }
+
+        let evCursorY = cursorY + (wrapDayHeader ? 106 : 72);
+
+        evLayouts.forEach(({ ev, metaLines, titleLines, evBoxH }) => {
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.88)';
+          drawRoundedRect(ctx, evX, evCursorY, evW, evBoxH, 16);
+          ctx.fill();
+
+          ctx.strokeStyle = 'rgba(245, 158, 11, 0.45)';
+          ctx.lineWidth = 2;
+          drawRoundedRect(ctx, evX, evCursorY, evW, evBoxH, 16);
+          ctx.stroke();
+
+          ctx.textAlign = 'left';
+          ctx.font = `30px ${fontStack}`;
+          ctx.fillText(ev.icon || '📌', evX + 18, evCursorY + 44);
+
+          ctx.font = `700 20px ${fontStack}`;
+          ctx.fillStyle = '#581c87';
+          let lineY = evCursorY + 34;
+          metaLines.forEach((mLine) => {
+            ctx.fillText(mLine, evX + textOffsetX, lineY, safeEvTextWidth);
+            lineY += 30;
+          });
+
+          ctx.font = `700 24px ${fontStack}`;
+          ctx.fillStyle = '#0f172a';
+          lineY += 6;
+          titleLines.forEach((tLine) => {
+            ctx.fillText(tLine, evX + textOffsetX, lineY, safeEvTextWidth);
+            lineY += 34;
+          });
+
+          evCursorY += evBoxH + 16;
+        });
+
+        cursorY += cardH + 24;
+      });
+
+      // 5. Footer
+      ctx.textAlign = 'center';
+      if (footer1Lines.length > 0) {
+        ctx.fillStyle = '#fde68a';
+        ctx.font = `700 22px ${fontStack}`;
+        footer1Lines.forEach((fLine) => {
+          cursorY += 28;
+          ctx.fillText(fLine, width / 2, cursorY, safeHeaderWidth);
+        });
+      }
+
+      if (footer2Lines.length > 0) {
+        ctx.fillStyle = 'rgba(254, 243, 199, 0.85)';
+        ctx.font = `500 19px ${fontStack}`;
+        footer2Lines.forEach((fLine) => {
+          cursorY += 28;
+          ctx.fillText(fLine, width / 2, cursorY, safeHeaderWidth);
+        });
+      }
+
+      return canvas.toDataURL('image/png');
+    }
+
+    function copyTextToClipboard(str) {
+      const copyFallback = (val) => {
+        const ta = document.createElement('textarea');
+        ta.value = val;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch (err) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(str).catch(() => copyFallback(str));
+      } else {
+        copyFallback(str);
+      }
+    }
+
+    function setupEvents() {
+      // Populate Apps Script code block
+      const codeBlock = document.getElementById('appsScriptCodeBlock');
+      if (codeBlock) codeBlock.textContent = APPS_SCRIPT_CODE;
+
+      const bindEditable = (id, key) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('blur', () => {
+          if (key === 'subtitle') {
+            if (posterState.filterMode === 'upcoming') {
+              posterState.subtitleUpcoming = el.innerText.trim();
+            } else {
+              posterState.subtitleAll = el.innerText.trim();
+            }
+          } else {
+            posterState[key] = el.innerText.trim();
+          }
+          saveState();
+        });
+      };
+
+      bindEditable('posterSchoolBadge', 'schoolBadge');
+      bindEditable('posterSchoolName', 'schoolName');
+      bindEditable('posterMainTitle', 'mainTitle');
+      bindEditable('posterSubtitle', 'subtitle');
+      bindEditable('posterFooterLine1', 'footerLine1');
+      bindEditable('posterFooterLine2', 'footerLine2');
+
+      // Drive Sync controls
+      document.getElementById('inputAppsScriptUrl').addEventListener('change', (e) => {
+        posterState.appsScriptUrl = e.target.value.trim() || DEFAULT_WEB_APP_URL;
+        saveState();
+      });
+
+      document.getElementById('chkAutoSyncDrive').addEventListener('change', (e) => {
+        posterState.autoSyncDrive = e.target.checked;
+        saveState();
+        showToast(posterState.autoSyncDrive ? 'தானியங்கி Drive ஒத்திசைவு இயக்கப்பட்டது!' : 'தானியங்கி ஒத்திசைவு நிறுத்தப்பட்டது.');
+      });
+
+      document.getElementById('btnSyncDriveNow').addEventListener('click', () => {
+        syncFromGoogleDrive(false);
+      });
+
+      // Apps Script Modal controls
+      const modalAppsScript = document.getElementById('modalAppsScript');
+      const openScriptModal = () => modalAppsScript.classList.remove('hidden');
+      const closeScriptModal = () => modalAppsScript.classList.add('hidden');
+
+      document.getElementById('btnOpenAppsScriptModal').addEventListener('click', openScriptModal);
+      document.getElementById('btnShowScriptFromCard').addEventListener('click', openScriptModal);
+      document.getElementById('btnCloseAppsScriptModal').addEventListener('click', closeScriptModal);
+      document.getElementById('btnCloseAppsScriptModalBottom').addEventListener('click', closeScriptModal);
+
+      document.getElementById('btnCopyAppsScriptCode').addEventListener('click', () => {
+        copyTextToClipboard(APPS_SCRIPT_CODE);
+        showToast('Apps Script (Code.gs) குறியீடு நகலெடுக்கப்பட்டது!');
+      });
+
+      document.getElementById('btnDownloadAppsScriptFile').addEventListener('click', () => {
+        const blob = new Blob([APPS_SCRIPT_CODE], { type: 'text/javascript;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Code.gs';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('Code.gs கோப்பு பதிவிறக்கப்பட்டது!');
+      });
+
+      document.getElementById('btnDownloadSelfHtml').addEventListener('click', () => {
+        const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'poster.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('GitHub Pages-க்கான poster.html பதிவிறக்கப்பட்டது!');
+      });
+
+      // Filter buttons
+      document.getElementById('btnFilterUpcoming').addEventListener('click', () => {
+        posterState.filterMode = 'upcoming';
+        saveState();
+        renderPoster();
+      });
+
+      document.getElementById('btnFilterAll').addEventListener('click', () => {
+        posterState.filterMode = 'all';
+        saveState();
+        renderPoster();
+      });
+
+      // Theme selector
+      document.getElementById('selectTheme').addEventListener('change', (e) => {
+        posterState.theme = e.target.value;
+        saveState();
+        renderPoster();
+      });
+
+      // Clean mode toggle
+      document.getElementById('btnToggleCleanMode').addEventListener('click', () => {
+        posterState.cleanMode = !posterState.cleanMode;
+        saveState();
+        renderPoster();
+      });
+
+      // Reset to default
+      document.getElementById('btnResetDefault').addEventListener('click', () => {
+        posterState = getDefaultState();
+        saveState();
+        renderPoster();
+        showToast('அசல் சுற்றறிக்கை நிகழ்வுகள் மீட்டமைக்கப்பட்டன!');
+      });
+
+      // Add Day Modal controls
+      const modalAddDay = document.getElementById('modalAddDay');
+      const inputNewDate = document.getElementById('inputNewDate');
+      const inputNewDayLabel = document.getElementById('inputNewDayLabel');
+
+      inputNewDate.addEventListener('change', () => {
+        if (inputNewDate.value) {
+          const parts = inputNewDate.value.split('-');
+          if (parts.length === 3) {
+            const dt = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+            inputNewDayLabel.value = TAMIL_WEEKDAYS[dt.getDay()] || 'திங்கட்கிழமை';
+          }
+        }
+      });
+
+      document.getElementById('btnAddDayModal').addEventListener('click', () => {
+        modalAddDay.classList.remove('hidden');
+      });
+
+      const closeAddModal = () => modalAddDay.classList.add('hidden');
+      document.getElementById('btnCloseAddDay').addEventListener('click', closeAddModal);
+      document.getElementById('btnCancelAddDay').addEventListener('click', closeAddModal);
+
+      document.getElementById('btnConfirmAddDay').addEventListener('click', () => {
+        const rawDate = inputNewDate.value || '2026-11-15';
+        const parts = rawDate.split('-');
+        const dateDisplay = parts.length === 3 ? `${parts[2]}.${parts[1]}.${parts[0]}` : rawDate;
+        const dayName = inputNewDayLabel.value.trim() || 'ஞாயிற்றுக்கிழமை';
+        const icon = document.getElementById('inputNewIcon').value || '📌';
+        const time = document.getElementById('inputNewTime').value.trim() || 'காலை 9.30 மணி';
+        const title = document.getElementById('inputNewTitle').value.trim() || 'பள்ளிச் சிறப்பு நிகழ்வு';
+        const venue = document.getElementById('inputNewVenue').value.trim() || 'பட்டீஸ்வரம்';
+
+        posterState.days.push({
+          id: 'day-' + Date.now(),
+          isoDate: rawDate,
+          dateDisplay,
+          dayName,
+          tag: 'புதிய நிகழ்வு',
+          events: [
+            {
+              id: 'ev-' + Date.now(),
+              icon,
+              time,
+              title,
+              venue
+            }
+          ]
+        });
+
+        posterState.days.sort((a, b) => a.isoDate.localeCompare(b.isoDate));
+        saveState();
+        renderPoster();
+        closeAddModal();
+        document.getElementById('inputNewTitle').value = '';
+        showToast('புதிய நாள் & நிகழ்வு போஸ்டரில் சேர்க்கப்பட்டது!');
+      });
+
+      // Copy WhatsApp Text
+      document.getElementById('btnCopyWhatsapp').addEventListener('click', () => {
+        const visibleDays = getVisibleDays();
+        const lines = [
+          `🏛️ *${posterState.schoolName}*`,
+          `📢 *${posterState.mainTitle}*`,
+          `🗓️ *${posterState.filterMode === 'upcoming' ? posterState.subtitleUpcoming : posterState.subtitleAll}*`,
+          ''
+        ];
+        visibleDays.forEach((d) => {
+          lines.push(`📌 *${d.dateDisplay} (${d.dayName})*`);
+          d.events.forEach((ev) => {
+            lines.push(`   ${ev.icon} *${ev.time}* — ${ev.title} (📍 ${ev.venue})`);
+          });
+          lines.push('');
+        });
+        if (posterState.footerLine1) lines.push(`✨ _${posterState.footerLine1}_`);
+        if (posterState.footerLine2) lines.push(`🏫 _${posterState.footerLine2}_`);
+        copyTextToClipboard(lines.join('\n'));
+        showToast('WhatsApp தமிழ் செய்தி நகலெடுக்கப்பட்டது (Copied)!');
+      });
+
+      // Download PNG Poster + Open Guaranteed Save Modal
+      const modalPng = document.getElementById('modalPngPreview');
+      document.getElementById('btnDownloadPng').addEventListener('click', () => {
+        const dataUrl = generateHighResPosterPng();
+        const imgEl = document.getElementById('generatedPosterImg');
+        imgEl.src = dataUrl;
+        window.__latestPosterDataUrl = dataUrl;
+        modalPng.classList.remove('hidden');
+
+        const tempLink = document.createElement('a');
+        tempLink.download = `AGMHSS_Tamil_Schedule_${posterState.filterMode}.png`;
+        tempLink.href = dataUrl;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        showToast('உயர்தர PNG போஸ்டர் உருவாக்கப்பட்டது!');
+      });
+
+      const closePngModal = () => modalPng.classList.add('hidden');
+      document.getElementById('btnClosePngModal').addEventListener('click', closePngModal);
+      document.getElementById('btnClosePngModalBottom').addEventListener('click', closePngModal);
+      document.getElementById('btnDirectDownloadModal').addEventListener('click', () => {
+        if (!window.__latestPosterDataUrl) return;
+        const a = document.createElement('a');
+        a.download = `AGMHSS_Tamil_Schedule_${posterState.filterMode}.png`;
+        a.href = window.__latestPosterDataUrl;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setupEvents();
+      renderPoster();
+      if (posterState.autoSyncDrive) {
+        syncFromGoogleDrive(true);
+      }
+    });
+  </script>
+</body>
+</html>
